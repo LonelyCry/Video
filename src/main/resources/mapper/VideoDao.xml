@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ghe.video.dao.VideoDao">
+    <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
+        select id,name,order_num,duration,upload_time
+        from video
+        where name like #{name}
+    </select>
+    
+    <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.VideoDO">
+        insert into
+        video(name,order_num,duration,upload_time,create_time,file_url)
+        value(#{name},#{order_num},#{duration},#{upload_time},#{create_time},#{file_url})
+    </insert>
+
+    <update id="updateVideo" parameterType="cn.ghe.video.bean.VideoDO">
+        update video
+            <set>
+                <if test="name!=null">name=#{name},</if>
+                <if test="file_url!=null">file_url=#{file_url}</if>
+            </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteVideo">
+        delete from
+        video
+        where id = #{id}
+    </delete>
+</mapper>

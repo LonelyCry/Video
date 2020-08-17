@@ -1,0 +1,12 @@
+cn\ghe\video\config\DataSourceConfiguration.class
+cn\ghe\video\dao\VideoDao.class
+cn\ghe\video\service\TransactionManagementConfiguration.class
+cn\ghe\video\config\Swagger2Configuration.class
+cn\ghe\video\config\SessionFactoryConfiguration.class
+cn\ghe\video\service\impl\VideoServiceImpl.class
+cn\ghe\video\bean\Rest.class
+cn\ghe\video\controller\LoginController.class
+cn\ghe\video\bean\VideoDO.class
+cn\ghe\video\controller\VideoController.class
+cn\ghe\video\service\VideoService.class
+cn\ghe\video\ApiApplication.class
