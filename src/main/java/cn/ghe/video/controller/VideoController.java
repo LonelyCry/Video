@@ -1,6 +1,9 @@
 package cn.ghe.video.controller;
 
+import cn.ghe.video.bean.FileEntity;
+import cn.ghe.video.bean.IncorDO;
 import cn.ghe.video.bean.VideoDO;
+import cn.ghe.video.common.FileUploadTool;
 import cn.ghe.video.service.VideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -8,7 +11,13 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +25,7 @@ import java.util.Map;
 
 @Api(value="视频管理接口",description = "视频管理页面管理接口，提供视频的增、删、改、查",tags = "视频管理")
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/video")
 public class VideoController {
 
     @Autowired
@@ -31,23 +40,30 @@ public class VideoController {
         return "添加成功~~~";
     }
 
-    @ApiOperation(value = "删除视频" , notes = "根据视频主键id进行删除")
+    @ApiOperation(value = "删除单条视频" , notes = "根据单条视频主键id进行删除")
     @ApiImplicitParam(name = "id",value = "视频详情实体类主键id",required = true,dataType = "String")
     @RequestMapping(value = "/deleteVideo",method = RequestMethod.POST)
-    //RequestBody:接受前端传递的json数据
     public String deleteVideo(String id) {
         String flag = videoService.deleteVideo(id);
-        return "添加成功~~~";
+        return "删除成功~~~";
     }
 
-    @ApiOperation(value = "查询视频" , notes = "根据视频名称查询视频并返回给前端")
-    @ApiImplicitParam(name = "name",value = "视频名称",required = true,dataType = "String")
-    @RequestMapping(value = "/queryVideo",method = RequestMethod.POST)
+    @ApiOperation(value = "批量删除视频" , notes = "根据批量视频主键id进行删除")
+    @ApiImplicitParam(name = "list",value = "视频详情实体类主键id数组",required = true,dataType = "List")
+    @RequestMapping(value = "/deleteBatchVideo",method = RequestMethod.POST)
+    public String deleteBatchVideo(List list) {
+        String flag = videoService.deleteBatchVideo(list);
+        return "删除成功~~~";
+    }
+
+    @ApiOperation(value = "查询视频" , notes = "根据参数查询视频并返回给前端")
+    @ApiImplicitParam(name = "incorDO",value = "视频分页信息",required = true,dataType = "incorDO")
+    @RequestMapping(value = "/query",method = RequestMethod.POST)
     @ResponseBody
-    public List queryVideo(String name) {
-        List map = new ArrayList();
-        map = videoService.queryVideo(name);
-        return map;
+    public List queryVideo(@RequestBody IncorDO incorDO) {
+        List list = new ArrayList();
+        list = videoService.queryVideo(incorDO);
+        return list;
     }
 
     @ApiOperation(value = "更新视频" , notes = "更新视频")
@@ -57,6 +73,112 @@ public class VideoController {
     public String updateVideo(@RequestBody VideoDO videoDO) {
         String flag = videoService.updateVideo(videoDO);
         return flag;
+    }
+
+    @ApiOperation(value = "清空数据" , notes = "清空数据")
+    @RequestMapping(value = "/empty",method = RequestMethod.POST)
+    public String emptyVideo() {
+        videoService.emptyVideo();
+        return "清空成功~~~";
+    }
+
+    @ApiOperation(value = "视频预览" , notes = "视频预览")
+    @ApiImplicitParam(name = "list",value = "视频详情实体类主键id数组",required = true,dataType = "List")
+    @RequestMapping(value = "/play",method = RequestMethod.POST)
+    public String playVideo(List list) {
+        List listVideo = new ArrayList();
+        listVideo = videoService.playVideo(list);
+        return "视频预览~~~";
+    }
+
+    @RequestMapping(value = "/upload", method={RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public ModelAndView upload(@RequestParam(value = "file", required = false) MultipartFile multipartFile,
+                               HttpServletRequest request) {
+        String message = "";
+        FileEntity entity = new FileEntity();
+        Map map = new HashMap();
+        FileUploadTool fileUploadTool = new FileUploadTool();
+        try {
+            entity = fileUploadTool.createFile(multipartFile, request);
+            if (entity != null) {
+//                service.saveFile(entity);
+                message = "上传成功";
+                map.put("entity", entity);
+                map.put("result", message);
+            } else {
+                message = "上传失败";
+                map.put("result", message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ModelAndView("result", map);
+    }
+
+    /**
+     * 获取视频流
+     * @param response
+     * @param videoId 视频存放信息索引
+     * @return
+     */
+    @RequestMapping("/getVideo/{videoId}")
+    public void getVideo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer videoId)
+    {
+        //视频资源存储信息
+        //FileEntity videoSource = videoService.selectById(videoId);
+        response.reset();
+        //获取从那个字节开始读取文件
+        String rangeString = request.getHeader("Range");
+
+        try {
+            //获取响应的输出流
+            OutputStream outputStream = response.getOutputStream();
+            File file = new File(videoSource.getFileAddress());
+            if(file.exists()){
+                RandomAccessFile targetFile = new RandomAccessFile(file, "r");
+                long fileLength = targetFile.length();
+                //播放
+                if(rangeString != null){
+
+                    long range = Long.valueOf(rangeString.substring(rangeString.indexOf("=") + 1, rangeString.indexOf("-")));
+                    //设置内容类型
+                    response.setHeader("Content-Type", "video/mp4");
+                    //设置此次相应返回的数据长度
+                    response.setHeader("Content-Length", String.valueOf(fileLength - range));
+                    //设置此次相应返回的数据范围
+                    response.setHeader("Content-Range", "bytes "+range+"-"+(fileLength-1)+"/"+fileLength);
+                    //返回码需要为206，而不是200
+                    response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
+                    //设定文件读取开始位置（以字节为单位）
+                    targetFile.seek(range);
+                }else {//下载
+
+                    //设置响应头，把文件名字设置好
+                    response.setHeader("Content-Disposition", "attachment; filename="+videoSource.getFileName() );
+                    //设置文件长度
+                    response.setHeader("Content-Length", String.valueOf(fileLength));
+                    //解决编码问题
+                    response.setHeader("Content-Type","application/octet-stream");
+                }
+                byte[] cache = new byte[1024 * 300];
+                int flag;
+                while ((flag = targetFile.read(cache))!=-1){
+                    outputStream.write(cache, 0, flag);
+                }
+            }else {
+                String message = "file:"+videoSource.getFileName()+" not exists";
+                //解决编码问题
+                response.setHeader("Content-Type","application/json");
+                outputStream.write(message.getBytes(StandardCharsets.UTF_8));
+            }
+
+            outputStream.flush();
+            outputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
