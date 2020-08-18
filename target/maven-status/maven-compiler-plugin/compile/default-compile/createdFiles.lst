@@ -3,6 +3,7 @@ cn\ghe\video\dao\VideoDao.class
 cn\ghe\video\service\TransactionManagementConfiguration.class
 cn\ghe\video\config\Swagger2Configuration.class
 cn\ghe\video\config\SessionFactoryConfiguration.class
+cn\ghe\video\bean\LoginDO.class
 cn\ghe\video\service\impl\VideoServiceImpl.class
 cn\ghe\video\bean\Rest.class
 cn\ghe\video\controller\LoginController.class

@@ -1,12 +1,13 @@
 D:\soft\video\src\main\java\cn\ghe\video\controller\LoginController.java
-D:\soft\video\src\main\java\cn\ghe\video\config\Swagger2Configuration.java
 D:\soft\video\src\main\java\cn\ghe\video\dao\VideoDao.java
 D:\soft\video\src\main\java\cn\ghe\video\bean\VideoDO.java
 D:\soft\video\src\main\java\cn\ghe\video\ApiApplication.java
 D:\soft\video\src\main\java\cn\ghe\video\bean\Rest.java
-D:\soft\video\src\main\java\cn\ghe\video\service\VideoService.java
 D:\soft\video\src\main\java\cn\ghe\video\config\SessionFactoryConfiguration.java
 D:\soft\video\src\main\java\cn\ghe\video\config\DataSourceConfiguration.java
 D:\soft\video\src\main\java\cn\ghe\video\controller\VideoController.java
+D:\soft\video\src\main\java\cn\ghe\video\config\Swagger2Configuration.java
+D:\soft\video\src\main\java\cn\ghe\video\service\VideoService.java
+D:\soft\video\src\main\java\cn\ghe\video\bean\LoginDO.java
 D:\soft\video\src\main\java\cn\ghe\video\service\impl\VideoServiceImpl.java
 D:\soft\video\src\main\java\cn\ghe\video\service\TransactionManagementConfiguration.java
