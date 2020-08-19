@@ -21,6 +21,7 @@ public class LoginController {
     @ApiImplicitParam(name = "LoginDO",value = "测试",required = true,dataType = "LoginDO")
     @ApiOperation(value = "登陆" , notes = "用户登陆")
     public Rest index(@RequestBody LoginDO loginDo) {
+        System.out.println("用户登陆--------------------------------");
         Rest mv = new Rest();
         if("admin".equals(loginDo.getUserName())){
             mv.setStatus("ok");

@@ -2,6 +2,7 @@ package cn.ghe.video.controller;
 
 import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
+import cn.ghe.video.bean.Rest;
 import cn.ghe.video.bean.VideoDO;
 import cn.ghe.video.common.FileUploadTool;
 import cn.ghe.video.service.VideoService;
@@ -12,16 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Api(value="视频管理接口",description = "视频管理页面管理接口，提供视频的增、删、改、查",tags = "视频管理")
 @Controller
@@ -60,10 +60,19 @@ public class VideoController {
     @ApiImplicitParam(name = "incorDO",value = "视频分页信息",required = true,dataType = "incorDO")
     @RequestMapping(value = "/query",method = RequestMethod.POST)
     @ResponseBody
-    public List queryVideo(@RequestBody IncorDO incorDO) {
+    public Rest queryVideo(@RequestBody IncorDO incorDO) {
+        Rest rest = new Rest();
         List list = new ArrayList();
         list = videoService.queryVideo(incorDO);
-        return list;
+        System.out.println("sdasdasdsa");
+        System.out.println(list);
+        rest.setList(list);
+        rest.setPageSize(incorDO.getPageSize());
+        rest.setPage(incorDO.getPage());
+        rest.setTotal(queryTotal());
+        rest.setMsg("查询成功");
+        rest.setSuccess(true);
+        return rest;
     }
 
     @ApiOperation(value = "更新视频" , notes = "更新视频")
@@ -91,13 +100,56 @@ public class VideoController {
         return "视频预览~~~";
     }
 
-    @RequestMapping(value = "/upload", method={RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/submit", method=RequestMethod.POST)
     @ResponseBody
-    public ModelAndView upload(@RequestParam(value = "file", required = false) MultipartFile multipartFile,
+    public ModelAndView upload(@RequestParam(value = "filevideo", required = false) MultipartFile multipartFile,
                                HttpServletRequest request) {
+
+        StandardMultipartHttpServletRequest httpServletRequest = (StandardMultipartHttpServletRequest) request;
+        Enumeration<String> parameterNames = httpServletRequest.getParameterNames();
+        System.out.println("-------------------ParameterNames------------------");
+        while(parameterNames.hasMoreElements()){
+            String key = parameterNames.nextElement();
+            String value = httpServletRequest.getParameter(key);
+            System.out.println("key = " + key);
+            System.out.println("value = " + value);
+        }
+        System.out.println("-------------------AttributeNames------------------");
+        Enumeration<String> attributeNames = httpServletRequest.getAttributeNames();
+        while (attributeNames.hasMoreElements()){
+            String key = attributeNames.nextElement();
+            System.out.println("key = " + key);
+        }
+        System.out.println("-------------------HeaderNames------------------");
+        Enumeration<String> headerNames = httpServletRequest.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String key = headerNames.nextElement();
+            String value = httpServletRequest.getHeader(key);
+            System.out.println(String.format("key: %s, value:%s",key,value));
+        }
+        System.out.println("-------------------FileNames------------------");
+        Iterator<String> iterator = httpServletRequest.getFileNames();
+        System.out.println(iterator.hasNext() + "     ss s ");
+        while (iterator.hasNext()) {
+            MultipartFile file = httpServletRequest.getFile(iterator.next());
+            String fileNames = file.getOriginalFilename();
+            int split = fileNames.lastIndexOf(".");
+            System.out.println("fileNames = " + fileNames);
+        }
+
         String message = "";
+        System.out.println("shihihihihihsihdsidhoahdosia==================");
         FileEntity entity = new FileEntity();
+
         Map map = new HashMap();
+        MultipartHttpServletRequest multipartRequest=(MultipartHttpServletRequest) request;
+        System.out.println(multipartRequest.getFileMap());
+        System.out.println(multipartRequest.getFileNames());
+        System.out.println(multipartRequest.getMultiFileMap());
+        System.out.println(multipartRequest.getAttribute("page"));
+        MultipartFile s = multipartRequest.getFile("page");   //file是form-data中二进制字段对应的name
+        System.out.println(multipartRequest.getFile("pageSize"));
+        System.out.println(s + "===============");
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
@@ -122,7 +174,7 @@ public class VideoController {
      * @param videoId 视频存放信息索引
      * @return
      */
-    @RequestMapping("/getVideo/{videoId}")
+   /* @RequestMapping("/getVideo/{videoId}")
     public void getVideo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer videoId)
     {
         //视频资源存储信息
@@ -179,6 +231,13 @@ public class VideoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
+    /**
+     * 查询总数
+     */
+    public int queryTotal(){
+        int total = videoService.queryTotal();
+        return total;
+    }
 }

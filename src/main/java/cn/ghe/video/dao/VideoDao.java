@@ -23,4 +23,6 @@ public interface VideoDao {
     void deleteVideo();
 
     List playVideo(List list);
+
+    int queryTotal();
 }

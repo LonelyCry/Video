@@ -6,7 +6,7 @@
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,order_num,duration,upload_time
         from video
-        where name like #{name}
+        limit ${start_num},${pageSize}
     </select>
     
     <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.VideoDO">
@@ -19,14 +19,31 @@
         update video
             <set>
                 <if test="name!=null">name=#{name},</if>
+                <if test="order_num!=null">order_num=#{order_num},</if>
                 <if test="file_url!=null">file_url=#{file_url}</if>
             </set>
         where id = #{id}
     </update>
 
+    <!--清空操作和单条视频删除-->
     <delete id="deleteVideo">
         delete from
         video
-        where id = #{id}
+        <if test="id != null and id != ''">id = #{id}</if>
     </delete>
+
+    <delete id="deleteBatchVideo" parameterType="java.util.List">
+        delete from video where 1>2 or id in
+        <foreach collection="list"  item="item" open="(" separator="," close=")" >
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="playVideo" resultType="cn.ghe.video.bean.VideoDO">
+        select id,name,order_num,duration,upload_time
+        from video where 1 = 1 id in
+        <foreach collection="list"  item="item" open="(" separator="," close=")" >
+            #{item}
+        </foreach>
+    </select>
 </mapper>

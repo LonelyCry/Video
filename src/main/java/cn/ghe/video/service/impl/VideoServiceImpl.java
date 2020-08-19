@@ -23,8 +23,8 @@ public class VideoServiceImpl implements VideoService {
     public List queryVideo(IncorDO incorDO) {
         Map map = new HashMap<>();
         int pageSize = incorDO.getPageSize();
-        int currentPage = incorDO.getCurrentPage();
-        int start_num = (pageSize - 1) * currentPage;
+        int page = incorDO.getPage();
+        int start_num = (page - 1) * pageSize;
         map.put("start_num",start_num);
         map.put("pageSize",pageSize);
         List m = videoDao.queryVideo(map);
@@ -87,5 +87,10 @@ public class VideoServiceImpl implements VideoService {
     public List playVideo(List list) {
         List listVideo = videoDao.playVideo(list);
         return null;
+    }
+
+    @Override
+    public int queryTotal() {
+        return videoDao.queryTotal();
     }
 }
