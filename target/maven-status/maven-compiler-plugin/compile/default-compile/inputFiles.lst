@@ -1,8 +1,12 @@
+D:\soft\video\src\main\java\cn\ghe\video\common\TransfMediaTool.java
 D:\soft\video\src\main\java\cn\ghe\video\controller\LoginController.java
+D:\soft\video\src\main\java\cn\ghe\video\bean\FileEntity.java
+D:\soft\video\src\main\java\cn\ghe\video\bean\IncorDO.java
 D:\soft\video\src\main\java\cn\ghe\video\dao\VideoDao.java
 D:\soft\video\src\main\java\cn\ghe\video\bean\VideoDO.java
 D:\soft\video\src\main\java\cn\ghe\video\ApiApplication.java
 D:\soft\video\src\main\java\cn\ghe\video\bean\Rest.java
+D:\soft\video\src\main\java\cn\ghe\video\common\FileUploadTool.java
 D:\soft\video\src\main\java\cn\ghe\video\config\SessionFactoryConfiguration.java
 D:\soft\video\src\main\java\cn\ghe\video\config\DataSourceConfiguration.java
 D:\soft\video\src\main\java\cn\ghe\video\controller\VideoController.java
