@@ -62,6 +62,7 @@ public class VideoController {
     @ResponseBody
     public Rest queryVideo(@RequestBody IncorDO incorDO) {
         Rest rest = new Rest();
+        System.out.println("sdasdasdsa================");
         List list = new ArrayList();
         list = videoService.queryVideo(incorDO);
         System.out.println("sdasdasdsa");
@@ -112,7 +113,8 @@ public class VideoController {
             String key = parameterNames.nextElement();
             String value = httpServletRequest.getParameter(key);
             System.out.println("key = " + key);
-            System.out.println("value = " + value);
+            System.out.println("value = " + value);     /*    ;E9ugXxefO;Z    HGsr5NeL=E8l  ;Gtt.gk2r3lw
+   */
         }
         System.out.println("-------------------AttributeNames------------------");
         Enumeration<String> attributeNames = httpServletRequest.getAttributeNames();

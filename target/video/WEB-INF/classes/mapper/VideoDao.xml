@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ghe.video.dao.VideoDao">
+    <select id="queryTotal" resultType="Integer">
+        select count(id)
+        from video
+    </select>
+
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,order_num,duration,upload_time
         from video

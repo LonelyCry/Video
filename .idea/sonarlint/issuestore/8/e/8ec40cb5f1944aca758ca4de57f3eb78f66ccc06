@@ -1,0 +1,61 @@
+
+osquid:CommentedOutCodeLineŸ"<This block of commented-out lines of code should be removed.(ÍäÀûÿÿÿÿ8×ðŠŒÀ.
+[
+squid:S106o"9Replace this use of System.out or System.err by a logger.(‘è°þÿÿÿÿ8†ƒ’·À.
+V
+squid:S106t"9Replace this use of System.out or System.err by a logger.(ØÌöò8†ƒ’·À.
+Gsquid:S1148¨"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8×ðŠŒÀ.
+Isquid:S1481Š"*Remove this unused "split" local variable.(Žæá 8†ƒ’·À.
+\
+squid:S106•"9Replace this use of System.out or System.err by a logger.(§åÇÎþÿÿÿÿ8†ƒ’·À.
+\
+squid:S106‹"9Replace this use of System.out or System.err by a logger.(Žºƒúÿÿÿÿ8†ƒ’·À.
+hsquid:S44885"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±ìüý8×ðŠŒÀ.
+\
+squid:S106†"9Replace this use of System.out or System.err by a logger.(—¬Ùýÿÿÿÿ8†ƒ’·À.
+[
+squid:S106s"9Replace this use of System.out or System.err by a logger.(îÙê€úÿÿÿÿ8†ƒ’·À.
+\
+squid:S106™"9Replace this use of System.out or System.err by a logger.(¶›ë†ûÿÿÿÿ8†ƒ’·À.
+W
+squid:S106”"9Replace this use of System.out or System.err by a logger.(ÔÚ•ÿ8†ƒ’·À.
+Qsquid:S1481c".Remove this unused "listVideo" local variable.(Æ‘°ýÿÿÿÿ8×ðŠŒÀ.
+Gsquid:S14817")Remove this unused "flag" local variable.(Ê‰”»8×ðŠŒÀ.
+\
+squid:S106š"9Replace this use of System.out or System.err by a logger.(Å¨–ûÿÿÿÿ8†ƒ’·À.
+@squid:S1481/")Remove this unused "flag" local variable.(Þ´«ÿ
+[squid:CallToDeprecatedMethod"3Remove this use of "description"; it is deprecated.(ÔŸÛ
+V
+squid:S106}"9Replace this use of System.out or System.err by a logger.(¥å™ã8†ƒ’·À.
+\
+squid:S106—"9Replace this use of System.out or System.err by a logger.(®ÌÑžþÿÿÿÿ8†ƒ’·À.
+hsquid:S4488h"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÿÖ»—8†ƒ’·À.
+msquid:S4488="JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(žªÕòþÿÿÿÿ8×ðŠŒÀ.
+msquid:S4488Y"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ã§¯žûÿÿÿÿ8×ðŠŒÀ.
+fsquid:S4488$"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ø¶åƒüÿÿÿÿ
+msquid:S4488a"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ÆîÀüÿÿÿÿ8†ƒ’·À.
+fsquid:S1192¢"GDefine a constant instead of duplicating this literal "result" 3 times.(Ï™é³8×ðŠŒÀ.
+isquid:S3027Š"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Žæá 8†ƒ’·À.
+osquid:CommentedOutCodeLineµ"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ8×ðŠŒÀ.
+[
+squid:S106A"9Replace this use of System.out or System.err by a logger.(¬—˜ÿûÿÿÿÿ8ì¢ñ»À.
+[
+squid:S106{"9Replace this use of System.out or System.err by a logger.(îÙê€úÿÿÿÿ8†ƒ’·À.
+W
+squid:S106„"9Replace this use of System.out or System.err by a logger.(äþ„8†ƒ’·À.
+[
+squid:S106w"9Replace this use of System.out or System.err by a logger.(ºÜµ’ûÿÿÿÿ8†ƒ’·À.
+asquid:S4488-"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(’™÷¾
+\
+squid:S106‚"9Replace this use of System.out or System.err by a logger.(Ç‰îüýÿÿÿÿ8†ƒ’·À.
+[
+squid:S106D"9Replace this use of System.out or System.err by a logger.(º‘æõúÿÿÿÿ8†ƒ’·À.
+W
+squid:S106–"9Replace this use of System.out or System.err by a logger.(¡Í„8†ƒ’·À.
+xsquid:S1488T"\Immediately return this expression instead of assigning it to the temporary variable "flag".(É“€³ûÿÿÿÿ
+hsquid:S4488Q"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÂªÔ¢8×ðŠŒÀ.
+[
+squid:S106E"9Replace this use of System.out or System.err by a logger.(ã¿¢Ôùÿÿÿÿ8†ƒ’·À.
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(ú´˜àûÿÿÿÿ8†ƒ’·À.
+squid:S1488ò"]Immediately return this expression instead of assigning it to the temporary variable "total".(§ÀÍûÿÿÿÿ8†ƒ’·À.

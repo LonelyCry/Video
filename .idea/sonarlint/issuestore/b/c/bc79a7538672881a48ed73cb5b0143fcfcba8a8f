@@ -1,0 +1,26 @@
+
+asquid:CommentedOutCodeLine\"<This block of commented-out lines of code should be removed.(®‚Ô
+bsquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ý¾õŽ
+N
+squid:S1060"9Replace this use of System.out or System.err by a logger.(³ÈÓF
+fsquid:S3027@"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(¥Ã‘£úÿÿÿÿ
+Isquid:S1135?"2Complete the task associated to this TODO comment.(¬œþ‚
+isquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(öð¹ƒ
+?squid:S1148r"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+T
+squid:S106A"9Replace this use of System.out or System.err by a logger.(§ÑÛÏùÿÿÿÿ
+Xsquid:S10757"ARefactor your code to get this URI from a customizable parameter.(“­ž¥
+O
+squid:S106H"9Replace this use of System.out or System.err by a logger.(„Áõ…
+T
+squid:S1064"9Replace this use of System.out or System.err by a logger.(™ÿ¥²þÿÿÿÿ
+bsquid:S3027¾"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Ì£‹Ë
+bsquid:S2184"FCast one of the operands of this multiplication operation to a "long".(×Àš÷þÿÿÿÿ
+isquid:S1858 "M"getOriginalFilename" returns a string, there's no need to call "toString()".(ªßºçÿÿÿÿÿ
+?squid:S1148N"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+{squid:S1488Ê"cImmediately return this expression instead of assigning it to the temporary variable "newFileName".(ê¿ð—
+[squid:S2147O"DCombine this catch with the one at line 77, which has the same body.(ï­£Ä
+usquid:S3008"YRename this field "upload_maxsize" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Àš÷þÿÿÿÿ
+?squid:S1148P"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+O
+squid:S106,"9Replace this use of System.out or System.err by a logger.(–ºƒ
