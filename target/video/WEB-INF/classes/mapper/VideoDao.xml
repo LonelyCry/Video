@@ -9,15 +9,16 @@
     </select>
 
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
-        select id,name,order_num,duration,upload_time
+        select id,name,order_num as ordernum,
+            duration,upload_time as uploadtime,create_time as createtime
         from video
         limit ${start_num},${pageSize}
     </select>
     
-    <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.VideoDO">
+    <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.FileEntity">
         insert into
         video(name,order_num,duration,upload_time,create_time,file_url)
-        value(#{name},#{order_num},#{duration},#{upload_time},#{create_time},#{file_url})
+        value(#{name},#{order_num},#{duration},#{uploadTime},#{uploadTime},#{path})
     </insert>
 
     <update id="updateVideo" parameterType="cn.ghe.video.bean.VideoDO">
@@ -34,7 +35,13 @@
     <delete id="deleteVideo">
         delete from
         video
-        <if test="id != null and id != ''">id = #{id}</if>
+        where id = #{id}
+    </delete>
+
+    <!--清空操作和单条视频删除-->
+    <delete id="emptyVideo">
+        delete from
+        video
     </delete>
 
     <delete id="deleteBatchVideo" parameterType="java.util.List">

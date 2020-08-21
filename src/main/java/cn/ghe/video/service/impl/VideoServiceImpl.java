@@ -1,5 +1,6 @@
 package cn.ghe.video.service.impl;
 
+import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
 import cn.ghe.video.bean.VideoDO;
 import cn.ghe.video.dao.VideoDao;
@@ -32,12 +33,12 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public void addVideo() {
-        videoDao.addVideo();
+    public void addVideo(FileEntity entity) {
+        videoDao.addVideo(entity);
     }
 
     @Override
-    public String deleteVideo(String id) {
+    public String deleteVideo(int id) {
         String flag;
         //删除当前id在数据库中的记录
         int i = videoDao.deleteVideo(id);
@@ -65,8 +66,9 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public void emptyVideo() {
-        videoDao.deleteVideo();
+    public String emptyVideo() {
+        videoDao.emptyVideo();
+        return null;
     }
 
     @Override
@@ -86,7 +88,7 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public List playVideo(List list) {
         List listVideo = videoDao.playVideo(list);
-        return null;
+        return listVideo;
     }
 
     @Override

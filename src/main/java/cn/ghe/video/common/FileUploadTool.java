@@ -26,7 +26,7 @@ public class FileUploadTool {
     // 允许的视频转码格式(mencoder)
     private static String[] allowAVI = { ".wmv9", ".rm", ".rmvb" };
 
-    public FileEntity createFile(MultipartFile multipartFile, HttpServletRequest request) {
+    public FileEntity createFile(MultipartFile multipartFile, HttpServletRequest request, String order_num) {
         FileEntity entity = new FileEntity();
         boolean bflag = false;
         String fileName = multipartFile.getOriginalFilename().toString();
@@ -53,9 +53,11 @@ public class FileUploadTool {
         }
         if (bflag) {
             String logoPathDir = "/video/";
-            String logoRealPathDir = request.getSession().getServletContext().getRealPath(logoPathDir);
+            //String logoRealPathDir = request.getSession().getServletContext().getRealPath(logoPathDir);
             // 上传到本地磁盘
-            // String logoRealPathDir = "E:/upload";
+            String logoRealPathDir = "D:/upload";
+            //linux文件
+            //String logoRealPathDir = "video" + File.separator + "file";
             File logoSaveFile = new File(logoRealPathDir);
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
@@ -64,7 +66,7 @@ public class FileUploadTool {
             String name = fileName.substring(0, fileName.lastIndexOf("."));
             System.out.println("文件名称：" + name);
             // 新的文件名
-            String newFileName = this.getName(fileName);
+            String newFileName = order_num+this.getName(fileName);
             // 文件扩展名
             String fileEnd = this.getFileExt(fileName);
             // 绝对路径
@@ -94,7 +96,9 @@ public class FileUploadTool {
                 // 设置转换为AVI格式后文件的保存路径
                 String codcAviPath = logoRealPathDir + File.separator + newFileName + ".avi";
                 // 获取配置的转换工具（mencoder.exe）的存放路径
-                String mencoderPath = request.getSession().getServletContext().getRealPath("/tools/mencoder.exe");
+                //String mencoderPath = "video" + File.separator + "file" + File.separator + "tools" + File.separator + "mencoder.exe";
+                String mencoderPath = "D:/upload/tools/mencoder.exe";
+                //String mencoderPath = request.getSession().getServletContext().getRealPath("/tools/mencoder.exe");
                 aviPath = transfMediaTool.processAVI(mencoderPath, filedirs.getAbsolutePath(), codcAviPath);
                 fileEnd = this.getFileExt(codcAviPath);
             }
@@ -105,7 +109,9 @@ public class FileUploadTool {
                         // 设置转换为flv格式后文件的保存路径
                         String codcFilePath = logoRealPathDir + File.separator + newFileName + ".flv";
                         // 获取配置的转换工具（ffmpeg.exe）的存放路径
-                        String ffmpegPath = request.getSession().getServletContext().getRealPath("/tools/ffmpeg.exe");
+                        //String ffmpegPath = "video" + File.separator + "file" + File.separator + "tools" + File.separator + "ffmpeg.exe";
+                        //String ffmpegPath = request.getSession().getServletContext().getRealPath("/tools/ffmpeg.exe");
+                        String ffmpegPath = "D:/upload/tools/mencoder.exe";
                         transfMediaTool.processFLV(ffmpegPath, aviPath, codcFilePath);
                         fileDir = logoPathDir + newFileName + ".flv";
                         builder = new StringBuilder(fileDir);
@@ -115,7 +121,8 @@ public class FileUploadTool {
                     }
                 }
                 entity.setSize(size);
-                entity.setPath(finalFileDir);
+                //entity.setPath(finalFileDir);
+                entity.setPath(fileNamedirs);
                 entity.setTitleOrig(name);
                 entity.setTitleAlter(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -226,4 +233,5 @@ public class FileUploadTool {
         }
         return size;
     }
+
 }

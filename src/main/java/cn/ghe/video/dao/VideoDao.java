@@ -1,7 +1,7 @@
 package cn.ghe.video.dao;
 
 
-import cn.ghe.video.bean.IncorDO;
+import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.VideoDO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,15 +12,15 @@ import java.util.Map;
 public interface VideoDao {
     List queryVideo(Map map);
 
-    int deleteVideo(String id);
+    int deleteVideo(int id);
 
-    void addVideo();
+    void addVideo(FileEntity entity);
 
     int updateVideo(VideoDO videoDO);
 
     int deleteBatchVideo(List list);
 
-    void deleteVideo();
+    int emptyVideo();
 
     List playVideo(List list);
 

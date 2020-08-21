@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class Rest {
 
+    private String msgType;
+
     //登录成功返回值
     private String status;
 
@@ -104,5 +106,13 @@ public class Rest {
 
     public void setVideoList(List videoList) {
         this.videoList = videoList;
+    }
+
+    public String getMsgType() {
+        return msgType;
+    }
+
+    public void setMsgType(String msgType) {
+        this.msgType = msgType;
     }
 }

@@ -15,17 +15,22 @@ public class VideoDO {
     @ApiModelProperty(value = "视频名称", required = true)
     private String name;
     @ApiModelProperty(value = "序号", required = true)
-    private String order_num;
+    private String ordernum;
     @ApiModelProperty(value = "时长", required = true)
     private String duration;
     @ApiModelProperty(value = "更新时间", required = true)
-    private Date upload_time;
+    private Date uploadtime;
     @ApiModelProperty(value = "上传时间", required = true)
-    private Date create_time;
+    private Date createtime;
     @ApiModelProperty(value = "创建人", required = true)
-    private String create_name;
+    private String createname;
     @ApiModelProperty(value = "文件存放路径", required = true)
-    private String file_url;
+    private String fileurl;
+    @ApiModelProperty(value = "源文件名", required = true)
+    private String oldname;
+    @ApiModelProperty(value = "新文件名", required = true)
+    private String newname;
+
 
     public String getId() {
         return id;
@@ -43,12 +48,12 @@ public class VideoDO {
         this.name = name;
     }
 
-    public String getOrder_num() {
-        return order_num;
+    public String getOrdernum() {
+        return ordernum;
     }
 
-    public void setOrder_num(String order_num) {
-        this.order_num = order_num;
+    public void setOrdernum(String ordernum) {
+        this.ordernum = ordernum;
     }
 
     public String getDuration() {
@@ -59,27 +64,51 @@ public class VideoDO {
         this.duration = duration;
     }
 
-    public Date getUpload_time() {
-        return upload_time;
+    public Date getUploadtime() {
+        return uploadtime;
     }
 
-    public void setUpload_time(Date upload_time) {
-        this.upload_time = upload_time;
+    public void setUploadtime(Date uploadtime) {
+        this.uploadtime = uploadtime;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public String getCreate_name() {
-        return create_name;
+    public String getCreatename() {
+        return createname;
     }
 
-    public void setCreate_name(String create_name) {
-        this.create_name = create_name;
+    public void setCreatename(String createname) {
+        this.createname = createname;
+    }
+
+    public String getFileurl() {
+        return fileurl;
+    }
+
+    public void setFileurl(String fileurl) {
+        this.fileurl = fileurl;
+    }
+
+    public String getOldname() {
+        return oldname;
+    }
+
+    public void setOldname(String oldname) {
+        this.oldname = oldname;
+    }
+
+    public String getNewname() {
+        return newname;
+    }
+
+    public void setNewname(String newname) {
+        this.newname = newname;
     }
 }

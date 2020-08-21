@@ -15,7 +15,6 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
