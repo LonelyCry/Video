@@ -27,3 +27,9 @@ r
 Bsrc/main/java/cn/ghe/video/config/SessionFactoryConfiguration.java,5\8\5832ea763764f3e11b82d8bd891f00318e6c0b5f
 _
 /src/main/java/cn/ghe/video/bean/FileEntity.java,f\8\f8f3526117746955cf59c2be32667803119d26d7
+\
+,src/main/java/cn/ghe/video/dao/VideoDao.java,d\b\db22fbf8e726f7cee8751b12344ba8991f281e17
+V
+&src/main/resources/mapper/VideoDao.xml,3\8\3822a8731fd07c353acc9fcce9caf79b4ca8c224
+m
+=src/main/java/cn/ghe/video/service/impl/VideoServiceImpl.java,3\4\3470a86f37672a09ad0fc7ea1b3c3ae9d9fad915
