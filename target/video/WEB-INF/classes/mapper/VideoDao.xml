@@ -9,24 +9,27 @@
     </select>
 
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
-        select id,name,order_num as ordernum,
-            duration,upload_time as uploadtime,create_time as createtime
+        select id,name,ordernum,
+            duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
+            createtime,oldname,newname
         from video
         limit ${start_num},${pageSize}
     </select>
     
     <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.FileEntity">
         insert into
-        video(name,order_num,duration,upload_time,create_time,file_url)
-        value(#{name},#{order_num},#{duration},#{uploadTime},#{uploadTime},#{path})
+        video(name,ordernum,duration,uploadtime,createtime,fileurl,oldname,newname)
+        value(#{name},#{ordernum},#{duration},#{uploadTime},#{uploadTime},#{path},#{titleOrig},#{titleAlter})
     </insert>
 
     <update id="updateVideo" parameterType="cn.ghe.video.bean.VideoDO">
         update video
             <set>
                 <if test="name!=null">name=#{name},</if>
-                <if test="order_num!=null">order_num=#{order_num},</if>
-                <if test="file_url!=null">file_url=#{file_url}</if>
+                <if test="order_num!=null">ordernum=#{ordernum},</if>
+                <if test="file_url!=null">fileurl=#{fileurl}</if>
+                <if test="oldname!=null">oldname=#{oldname}</if>
+                <if test="newname!=null">newname=#{newname}</if>
             </set>
         where id = #{id}
     </update>
@@ -52,8 +55,10 @@
     </delete>
 
     <select id="playVideo" resultType="cn.ghe.video.bean.VideoDO">
-        select id,name,order_num,duration,upload_time
-        from video where 1 = 1 id in
+        select id,name,ordernum,
+        duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
+        createtime,oldname,newname
+        from video id in
         <foreach collection="list"  item="item" open="(" separator="," close=")" >
             #{item}
         </foreach>

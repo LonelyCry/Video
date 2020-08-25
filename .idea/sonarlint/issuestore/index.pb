@@ -19,3 +19,11 @@ j
 ,src/main/java/cn/ghe/video/bean/IncorDO.java,4\5\45df10500e5f18b1d1256c84edf7ca784152a8df
 e
 5src/main/java/cn/ghe/video/common/FileUploadTool.java,b\c\bc79a7538672881a48ed73cb5b0143fcfcba8a8f
+l
+<src/main/java/cn/ghe/video/config/Swagger2Configuration.java,2\7\27861cc21bb4740b7d0a2ffc3e3e52245e978e17
+n
+>src/main/java/cn/ghe/video/config/DataSourceConfiguration.java,a\0\a0b73212667be1a0f06dab06d4d5a1fe8532d3e7
+r
+Bsrc/main/java/cn/ghe/video/config/SessionFactoryConfiguration.java,5\8\5832ea763764f3e11b82d8bd891f00318e6c0b5f
+_
+/src/main/java/cn/ghe/video/bean/FileEntity.java,f\8\f8f3526117746955cf59c2be32667803119d26d7

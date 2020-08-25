@@ -57,8 +57,8 @@
     <select id="playVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,ordernum,
         duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
-        createtime,oldname,newname
-        from video id in
+        createtime,oldname,newname,fileurl
+        from video where id in
         <foreach collection="list"  item="item" open="(" separator="," close=")" >
             #{item}
         </foreach>

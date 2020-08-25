@@ -14,10 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
 
 @Api(value="视频管理接口",description = "视频管理页面管理接口，提供视频的增、删、改、查",tags = "视频管理")
@@ -126,11 +130,14 @@ public class VideoController {
     @ApiOperation(value = "视频预览", notes = "视频预览")
     @ApiImplicitParam(name = "incorDO", value = "视频详情实体类主键id数组", required = true, dataType = "IncorDO")
     @RequestMapping(value = "/play", method = RequestMethod.POST)
+    @ResponseBody
     public Rest playVideo(@RequestBody IncorDO incorDO) {
         Rest rest = new Rest();
         List listVideo = new ArrayList();
         List values = incorDO.getValues();
+        System.out.println("333333333333333333333");
         listVideo = videoService.playVideo(values);
+        System.out.println("ssssssssssss");
         if (values.size() == listVideo.size()) {
             rest.setSuccess(true);
             rest.setMsgType("success");
@@ -321,4 +328,21 @@ public class VideoController {
             e.printStackTrace();
         }
     }
+
+    @RequestMapping(value ="/getFileSrc" ,method = RequestMethod.POST)
+    @ResponseBody
+    public void getFileSrc(HttpServletRequest request , HttpServletResponse response, @RequestParam(value="path") String path) throws IOException {
+        File file = new File(path);
+        FileInputStream input = new FileInputStream(file);
+        int i = input.available();
+        byte[] bytes = new byte[i];
+        input.read(bytes);
+        response.setContentType("application/video");
+        OutputStream output = response.getOutputStream();
+        output.write(bytes);
+        output.flush();
+        output.close();
+        input.close();
+    }
+
 }

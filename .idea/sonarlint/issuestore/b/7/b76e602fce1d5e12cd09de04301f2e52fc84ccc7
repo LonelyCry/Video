@@ -1,19 +1,0 @@
-
-ksquid:S00100."NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üˆÌäúÿÿÿÿ
-fsquid:S001002"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êş³ö
-ksquid:S00100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çí´üÿÿÿÿ
-ksquid:S00100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼™¡·şÿÿÿÿ
-ksquid:S00100F"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì˜Îùÿÿÿÿ
-fsquid:S00100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áı¸
-fsquid:S00100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«´°â
-ksquid:S00100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ÑÖ¬úÿÿÿÿ
-qsquid:S00116"TRename this field "order_num" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô¯ãÿÿÿÿÿ
-nsquid:S00116"VRename this field "upload_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹àº
-ssquid:S00116"VRename this field "create_time" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÌó¹ùÿÿÿÿ
-ssquid:S00116"VRename this field "create_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü–”…ıÿÿÿÿ
-ksquid:S00116"SRename this field "file_url" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã£Áë
-isquid:S001172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êş³ö
-nsquid:S00117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼™¡·şÿÿÿÿ
-isquid:S00117J"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áı¸
-nsquid:S00117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´ÑÖ¬úÿÿÿÿ
-zsquid:UselessImportCheck"QRemove this unused import 'org.springframework.format.annotation.DateTimeFormat'.(‡ˆôƒøÿÿÿÿ
