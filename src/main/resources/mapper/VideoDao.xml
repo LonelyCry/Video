@@ -8,12 +8,24 @@
         from video
     </select>
 
+    <select id="queryFileUrl" resultType="String" parameterType="Integer">
+        select fileurl
+        from video
+        where id = ${id}
+    </select>
+
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,ordernum,
             duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
-            createtime,oldname,newname
+            createtime,oldname,newname,fileurl
         from video
         limit ${start_num},${pageSize}
+    </select>
+
+    <select id="queryByordernum" resultType="Integer" parameterType="String">
+        select count(ordernum)
+        from video
+        where ordernum = ${ordernum}
     </select>
     
     <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.FileEntity">

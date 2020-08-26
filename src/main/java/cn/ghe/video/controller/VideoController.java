@@ -4,6 +4,7 @@ import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
 import cn.ghe.video.bean.Rest;
 import cn.ghe.video.bean.VideoDO;
+import cn.ghe.video.common.FileDeleteTool;
 import cn.ghe.video.common.FileUploadTool;
 import cn.ghe.video.service.VideoService;
 import io.swagger.annotations.Api;
@@ -14,8 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -23,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
+
 
 @Api(value="视频管理接口",description = "视频管理页面管理接口，提供视频的增、删、改、查",tags = "视频管理")
 @Controller
@@ -44,12 +44,15 @@ public class VideoController {
     @ApiOperation(value = "删除单条视频", notes = "根据单条视频主键id进行删除")
     @ApiImplicitParam(name = "incorDO", value = "视频详情实体类主键id", required = true, dataType = "IncorDO")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
     public Rest deleteVideo(@RequestBody IncorDO incorDO) {
         Rest rest = new Rest();
         Map m = (Map) incorDO.getValues().get(0);
-        System.out.println(m.get("id") + "   +++++++++");
+        String filePathAndName = queryFileUrl(Integer.parseInt(m.get("id").toString()));
         String flag = videoService.deleteVideo(Integer.parseInt(m.get("id").toString()));
-        if ("1".equals(flag)) {
+        FileDeleteTool fileDeleteTool = new FileDeleteTool();
+        fileDeleteTool.delFile(filePathAndName);
+        if ("success".equals(flag)) {
             rest.setMsgType("success");
             rest.setMsg("删除成功！");
             rest.setSuccess(true);
@@ -64,10 +67,11 @@ public class VideoController {
     @ApiOperation(value = "批量删除视频", notes = "根据批量视频主键id进行删除")
     @ApiImplicitParam(name = "list", value = "视频详情实体类主键id数组", required = true, dataType = "List")
     @RequestMapping(value = "/deleteBatchVideo", method = RequestMethod.POST)
+    @ResponseBody
     public Rest deleteBatchVideo(List list) {
         Rest rest = new Rest();
         String flag = videoService.deleteBatchVideo(list);
-        if ("1".equals(flag)) {
+        if ("success".equals(flag)) {
             rest.setMsgType("success");
             rest.setMsg("删除成功！");
             rest.setSuccess(true);
@@ -85,11 +89,8 @@ public class VideoController {
     @ResponseBody
     public Rest queryVideo(@RequestBody IncorDO incorDO) {
         Rest rest = new Rest();
-        System.out.println("sdasdasdsa================");
         List list = new ArrayList();
         list = videoService.queryVideo(incorDO);
-        System.out.println("sdasdasdsa");
-        System.out.println(list);
         rest.setList(list);
         rest.setPageSize(incorDO.getPageSize());
         rest.setPage(incorDO.getPage());
@@ -100,29 +101,32 @@ public class VideoController {
     }
 
     @ApiOperation(value = "更新视频", notes = "更新视频")
-    @ApiImplicitParam(name = "VideoDO", value = "测试", required = true, dataType = "VideoDO")
+    @ApiImplicitParam(name = "incorDO", value = "测试", required = true, dataType = "IncorDO")
     @RequestMapping(value = "/updateVideo", method = RequestMethod.POST)
     @ResponseBody
-    public String updateVideo(@RequestBody VideoDO videoDO) {
-        String flag = videoService.updateVideo(videoDO);
-        return flag;
+    public String updateVideo(@RequestBody IncorDO incorDO) {
+        //String flag = videoService.updateVideo(videoDO);
+        Rest rest = new Rest();
+        List listVideo = new ArrayList();
+        List values = incorDO.getValues();
+        return "flag";
     }
 
     @ApiOperation(value = "清空数据", notes = "清空数据")
     @RequestMapping(value = "/empty", method = RequestMethod.POST)
+    @ResponseBody
     public Rest emptyVideo() {
         Rest rest = new Rest();
         String flag = videoService.emptyVideo();
-        ;
-        if ("1".equals(flag)) {
+        //if ("1".equals(flag)) {
             rest.setMsgType("success");
             rest.setMsg("删除成功！");
             rest.setSuccess(true);
-        } else {
+        /*} else {
             rest.setMsgType("error");
             rest.setMsg("删除失败！");
             rest.setSuccess(false);
-        }
+        }*/
 
         return rest;
     }
@@ -135,9 +139,7 @@ public class VideoController {
         Rest rest = new Rest();
         List listVideo = new ArrayList();
         List values = incorDO.getValues();
-        System.out.println("333333333333333333333");
         listVideo = videoService.playVideo(values);
-        System.out.println("ssssssssssss");
         if (values.size() == listVideo.size()) {
             rest.setSuccess(true);
             rest.setMsgType("success");
@@ -155,21 +157,6 @@ public class VideoController {
     @ResponseBody
     public Rest upload(@RequestParam(value = "filevideo", required = false) MultipartFile multipartFile,
                        HttpServletRequest request) {
-
-        /*// 将MultipartFile转换为Encoder所需的File
-        CommonsMultipartFile cf = (CommonsMultipartFile)multipartFile;
-        DiskFileItem fi = (DiskFileItem) cf.getFileItem();
-        File source = fi.getStoreLocation();
-        // 获取视频时长
-        Encoder encoder = new Encoder();
-        MultimediaInfo m = encoder.getInfo(source);
-        long ls = m.getDuration()/1000;
-        int hour = (int) (ls/3600);
-        int minute = (int) (ls%3600)/60;
-        int second = (int) (ls-hour*3600-minute*60);
-        System.out.println("视频时长为：{}时{}分{}秒"+hour+minute+second);*/
-
-
         StandardMultipartHttpServletRequest httpServletRequest = (StandardMultipartHttpServletRequest) request;
         Enumeration<String> parameterNames = httpServletRequest.getParameterNames();
         System.out.println("-------------------ParameterNames------------------");
@@ -181,12 +168,10 @@ public class VideoController {
             if ("name".equals(key)) {
                 name = value;
             }
-            if ("order_num".equals(key)) {
+            if ("ordernum".equals(key)) {
                 order_num = value;
             }
-            System.out.println("key = " + key);
-            System.out.println("value = " + value);     /*    ;E9ugXxefO;Z    HGsr5NeL=E8l  ;Gtt.gk2r3lw
-             */
+                 /*    ;E9ugXxefO;Z    HGsr5NeL=E8l  ;Gtt.gk2r3lw */
         }
         /*System.out.println("-------------------AttributeNames------------------");
         Enumeration<String> attributeNames = httpServletRequest.getAttributeNames();
@@ -201,7 +186,7 @@ public class VideoController {
             String value = httpServletRequest.getHeader(key);
             System.out.println(String.format("key: %s, value:%s",key,value));
         }*/
-        System.out.println("-------------------FileNames------------------");
+        /*System.out.println("-------------------FileNames------------------");
         Iterator<String> iterator = httpServletRequest.getFileNames();
         System.out.println(iterator.hasNext() + "     ss s ");
         while (iterator.hasNext()) {
@@ -209,17 +194,25 @@ public class VideoController {
             String fileNames = file.getOriginalFilename();
             int split = fileNames.lastIndexOf(".");
             System.out.println("fileNames = " + fileNames);
-        }
+        }*/
 
         String message = "";
-        System.out.println("shihihihihihsihdsidhoahdosia==================");
         FileEntity entity = new FileEntity();
-
         Rest map = new Rest();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
-            entity = fileUploadTool.createFile(multipartFile, request, order_num);
-            if (entity != null) {
+            String flag = "";
+            if(!"".equals(order_num)){
+                flag = videoService.queryByordernum(order_num);
+            }
+            if("success".equals(flag)){
+                entity = fileUploadTool.createFile(multipartFile, request, order_num);
+                message = "上传失败";
+            }else {
+                message = "序号已经存在，请修改！";
+            }
+
+            if (entity != null && "success".equals(flag)) {
                 entity.setName(name);
                 entity.setOrdernum(order_num);
                 videoService.addVideo(entity);
@@ -227,7 +220,6 @@ public class VideoController {
                 map.setSuccess(true);
                 map.setMsgType("success");
             } else {
-                message = "上传失败";
                 map.setSuccess(false);
                 map.setMsgType("error");
             }
@@ -240,8 +232,8 @@ public class VideoController {
 
     /**
      * 获取视频流
-     * @param response
-     * @param videoId 视频存放信息索引
+     * @param
+     * @param
      * @return
      */
    /* @RequestMapping("/getVideo/{videoId}")
@@ -303,6 +295,10 @@ public class VideoController {
         }
     }*/
 
+    public String queryFileUrl(int id){
+        return videoService.queryFileUrl(id);
+    }
+
     /**
      * 查询总数
      */
@@ -311,23 +307,7 @@ public class VideoController {
         return total;
     }
 
-    /**
-     * 删除文件
-     *
-     * @param filePathAndName String 文件路径及名称 如c:/fqf.txt
-     * @return boolean
-     */
-    public void delFile(String filePathAndName) {
-        try {
-            String filePath = filePathAndName;
-            filePath = filePath.toString();
-            File myDelFile = new File(filePath);
-            myDelFile.delete();
-        } catch (Exception e) {
-            System.out.println("删除文件操作出错");
-            e.printStackTrace();
-        }
-    }
+
 
     @RequestMapping(value ="/getFileSrc" ,method = RequestMethod.POST)
     @ResponseBody
@@ -344,5 +324,4 @@ public class VideoController {
         output.close();
         input.close();
     }
-
 }

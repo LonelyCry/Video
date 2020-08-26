@@ -22,4 +22,8 @@ public interface VideoService {
     List playVideo(List list);
 
     int queryTotal();
+
+    String queryByordernum(String order_num);
+
+    String queryFileUrl(int id);
 }

@@ -2,10 +2,11 @@ package cn.ghe.video.bean;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import java.sql.Date;
 
 /**
  * 视频类
- */import java.sql.Date;
+ */
 
 @Data
 public class VideoDO {
@@ -18,9 +19,9 @@ public class VideoDO {
     @ApiModelProperty(value = "时长", required = true)
     private String duration;
     @ApiModelProperty(value = "更新时间", required = true)
-    private Date uploadtime;
+    private String uploadtime;
     @ApiModelProperty(value = "上传时间", required = true)
-    private Date createtime;
+    private String createtime;
     @ApiModelProperty(value = "创建人", required = true)
     private String createname;
     @ApiModelProperty(value = "文件存放路径", required = true)
@@ -63,19 +64,19 @@ public class VideoDO {
         this.duration = duration;
     }
 
-    public Date getUploadtime() {
+    public String getUploadtime() {
         return uploadtime;
     }
 
-    public void setUploadtime(Date uploadtime) {
+    public void setUploadtime(String uploadtime) {
         this.uploadtime = uploadtime;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 

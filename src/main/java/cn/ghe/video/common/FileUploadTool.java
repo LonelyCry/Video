@@ -1,10 +1,14 @@
 package cn.ghe.video.common;
 
 import cn.ghe.video.bean.FileEntity;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.MultimediaInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -63,22 +67,41 @@ public class FileUploadTool {
                 logoSaveFile.mkdirs();
             }
             //todo:文件名称需要考虑，当上传相同文件名称的文件时怎么处理
-            String name = fileName.substring(0, fileName.lastIndexOf("."));
+            int n = fileName.lastIndexOf(".");
+            int l = fileName.lastIndexOf("\\") + 1;
+            String name = fileName.substring(l,n);
             System.out.println("文件名称：" + name);
+            //使用序号加+源文件名进行处理
             // 新的文件名
-            String newFileName = order_num+this.getName(fileName);
+            String newFileName = order_num+name;
             // 文件扩展名
             String fileEnd = this.getFileExt(fileName);
             // 绝对路径
+            String oldNamedirs = logoRealPathDir + File.separator + name + fileEnd;
             String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;
             System.out.println("保存的绝对路径：" + fileNamedirs);
             File filedirs = new File(fileNamedirs);
+            File oldfiledirs = new File(oldNamedirs);
+            FileDeleteTool fileDeleteTool = new FileDeleteTool();
             // 转入文件
             try {
-                multipartFile.transferTo(filedirs);
+                multipartFile.transferTo(oldfiledirs);
+                copyFile(oldNamedirs,fileNamedirs);
+                VideoConvert v = new VideoConvert();
+                Encoder encoder = new Encoder();
+                MultimediaInfo m = encoder.getInfo(filedirs);
+
+                System.out.println(m.getVideo().getDecoder());
+                if("h264".equals(m.getVideo().getDecoder())){
+                    fileDeleteTool.delFile(oldNamedirs);
+                }else{
+                    fileDeleteTool.delFile(fileNamedirs);
+                    v.frameRecord(oldNamedirs, fileNamedirs);
+                    fileDeleteTool.delFile(oldNamedirs);
+                }
             } catch (IllegalStateException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             // 相对路径
@@ -92,7 +115,7 @@ public class FileUploadTool {
             String aviPath = filedirs.getAbsolutePath();
             // 转码Avi
 //            boolean flag = false;
-            if (this.checkAVIType(fileEnd)) {
+           /* if (this.checkAVIType(fileEnd)) {
                 // 设置转换为AVI格式后文件的保存路径
                 String codcAviPath = logoRealPathDir + File.separator + newFileName + ".avi";
                 // 获取配置的转换工具（mencoder.exe）的存放路径
@@ -101,17 +124,17 @@ public class FileUploadTool {
                 //String mencoderPath = request.getSession().getServletContext().getRealPath("/tools/mencoder.exe");
                 aviPath = transfMediaTool.processAVI(mencoderPath, filedirs.getAbsolutePath(), codcAviPath);
                 fileEnd = this.getFileExt(codcAviPath);
-            }
+            }*/
             if (aviPath != null) {
                 // 转码Flv
-                if (this.checkMediaType(fileEnd)) {
+               /* if (this.checkMediaType(fileEnd)) {
                     try {
                         // 设置转换为flv格式后文件的保存路径
                         String codcFilePath = logoRealPathDir + File.separator + newFileName + ".flv";
                         // 获取配置的转换工具（ffmpeg.exe）的存放路径
                         //String ffmpegPath = "video" + File.separator + "file" + File.separator + "tools" + File.separator + "ffmpeg.exe";
                         //String ffmpegPath = request.getSession().getServletContext().getRealPath("/tools/ffmpeg.exe");
-                        String ffmpegPath = "D:/upload/tools/mencoder.exe";
+                        String ffmpegPath = "D:/upload/tools/ffmpeg.exe";
                         transfMediaTool.processFLV(ffmpegPath, aviPath, codcFilePath);
                         fileDir = logoPathDir + newFileName + ".flv";
                         builder = new StringBuilder(fileDir);
@@ -119,7 +142,9 @@ public class FileUploadTool {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
+                }*/
+                String duration = ReadVideoTime(fileNamedirs);
+                entity.setDuration(duration);
                 entity.setSize(size);
                 //entity.setPath(finalFileDir);
                 entity.setPath(fileNamedirs);
@@ -127,6 +152,7 @@ public class FileUploadTool {
                 entity.setTitleAlter(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 entity.setUploadTime(timestamp);
+
                 return entity;
             } else {
                 return null;
@@ -135,6 +161,42 @@ public class FileUploadTool {
             return null;
         }
 
+    }
+
+    private void copyFile(String fileNamedirs, String oldNamedirs) {
+        File f1=new File(fileNamedirs);
+        File f2=new File(oldNamedirs);
+        //2.提供相应的流对象
+        FileInputStream fis=null;
+        FileOutputStream fos=null;
+        try{
+            fis=new FileInputStream(f1);
+            fos=new FileOutputStream(f2);
+            //3.实现复制
+            byte[]b=new byte[200];
+            int len;
+            while((len=fis.read(b))!=-1){
+                fos.write(b, 0, len);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(fis!=null){
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(fos!=null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
     }
 
     /**
@@ -232,6 +294,26 @@ public class FileUploadTool {
             size = df.format((double) fileLength / 1073741824) + "GB";
         }
         return size;
+    }
+
+    private String ReadVideoTime(String source) {
+        File f = new File(source);
+        Encoder encoder = new Encoder();
+        String length = "";
+        try {
+            MultimediaInfo md = encoder.getInfo(f);
+            long ls = md.getDuration()/1000;
+            int hour = (int) (ls/3600);
+            int minute = (int) (ls%3600)/60;
+            int second = (int) (ls-hour*3600-minute*60);
+            String h = (hour < 10)?"0"+hour:String.valueOf(hour);
+            String m = (minute < 10)?"0"+minute:String.valueOf(minute);
+            String s = (second < 10)?"0"+second:String.valueOf(second);
+            length = h+":"+m+":"+s;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return length;
     }
 
 }

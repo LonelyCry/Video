@@ -106,13 +106,23 @@ public class ee {
             attrs.setVideoAttributes(video);
             /*执行转码*/
             Encoder encoder = new Encoder();
+            MultimediaInfo m = encoder.getInfo(source);
+            System.out.println(m.getVideo().getDecoder());
+            System.out.println(m.getVideo().getSize().getWidth());
+            System.out.println(m.getVideo().getSize().getHeight());
+            System.out.println(m.getVideo().getFrameRate());
+            System.out.println(m.getVideo().getBitRate());
+            System.out.println(m.getAudio().getChannels());
+            System.out.println(m.getAudio().getBitRate());
+            System.out.println(m.getAudio().getSamplingRate());
+            System.out.println(m.getDuration());
             String[] s = encoder.getVideoEncoders();
             String[] ss = encoder.getSupportedDecodingFormats();
-            for (int i = 0;i < s.length;i++){
+            /*for (int i = 0;i < s.length;i++){
                 System.out.println(s[i]  + " :" + ss[i]);
-            }
+            }*/
             System.out.println();
-            encoder.encode(source, target, attrs);
+            //encoder.encode(source, target, attrs);
 
             System.out.println("转码成功！！！！！！！");
 
@@ -136,7 +146,9 @@ public class ee {
 
     public static void main(String[] args) {
         ee m = new ee();
+        //
         String sourcePath = "C:\\Users\\17426\\Downloads\\123遇见·泸州老窖_Final版.mp4";
+        //String sourcePath = "C:\\Users\\17426\\Downloads\\5b527330214a6.mp4";
         String targetPath = "C:\\Users\\17426\\Downloads\\Final版321.mp4";
         m.convertMultimediaFormat(sourcePath, targetPath, "libfaac", "libx264", "flv");
     }

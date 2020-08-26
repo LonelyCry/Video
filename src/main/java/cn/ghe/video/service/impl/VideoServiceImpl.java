@@ -7,6 +7,7 @@ import cn.ghe.video.dao.VideoDao;
 import cn.ghe.video.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 
 @Service
+@Transactional
 public class VideoServiceImpl implements VideoService {
 
     @Autowired
@@ -21,7 +23,7 @@ public class VideoServiceImpl implements VideoService {
 
 
     @Override
-    public List queryVideo(IncorDO incorDO) {
+    public List queryVideo(IncorDO incorDO) throws RuntimeException{
         Map map = new HashMap<>();
         int pageSize = incorDO.getPageSize();
         int page = incorDO.getPage();
@@ -33,12 +35,12 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public void addVideo(FileEntity entity) {
+    public void addVideo(FileEntity entity) throws RuntimeException{
         videoDao.addVideo(entity);
     }
 
     @Override
-    public String deleteVideo(int id) {
+    public String deleteVideo(int id) throws RuntimeException{
         String flag;
         //删除当前id在数据库中的记录
         int i = videoDao.deleteVideo(id);
@@ -52,7 +54,7 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public String updateVideo(VideoDO videoDO) {
+    public String updateVideo(VideoDO videoDO) throws RuntimeException{
         String flag;
         int i = videoDao.updateVideo(videoDO);
         //todo:视频时长，更新时间
@@ -66,13 +68,13 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public String emptyVideo() {
+    public String emptyVideo() throws RuntimeException{
         videoDao.emptyVideo();
         return null;
     }
 
     @Override
-    public String deleteBatchVideo(List list) {
+    public String deleteBatchVideo(List list) throws RuntimeException{
         String flag;
         //删除当前id在数据库中的记录
         int i = videoDao.deleteBatchVideo(list);
@@ -86,13 +88,30 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public List playVideo(List list) {
+    public List playVideo(List list) throws RuntimeException{
         List listVideo = videoDao.playVideo(list);
         return listVideo;
     }
 
     @Override
-    public int queryTotal() {
+    public int queryTotal()throws RuntimeException {
         return videoDao.queryTotal();
+    }
+
+    @Override
+    public String queryByordernum(String ordernum) throws RuntimeException{
+        String flag;
+        int num = videoDao.queryByordernum(ordernum);
+        if(num > 0){
+            flag = "false";
+        }else {
+            flag = "success";
+        }
+        return flag;
+    }
+
+    @Override
+    public String queryFileUrl(int id) throws RuntimeException{
+        return videoDao.queryFileUrl(id);
     }
 }
