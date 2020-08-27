@@ -65,12 +65,19 @@ public class VideoController {
     }
 
     @ApiOperation(value = "批量删除视频", notes = "根据批量视频主键id进行删除")
-    @ApiImplicitParam(name = "list", value = "视频详情实体类主键id数组", required = true, dataType = "List")
+    @ApiImplicitParam(name = "incorDO", value = "视频详情实体类主键id数组", required = true, dataType = "IncorDO")
     @RequestMapping(value = "/deleteBatchVideo", method = RequestMethod.POST)
     @ResponseBody
-    public Rest deleteBatchVideo(List list) {
+    public Rest deleteBatchVideo(@RequestBody IncorDO incorDO) {
         Rest rest = new Rest();
+        List list = incorDO.getValues();
         String flag = videoService.deleteBatchVideo(list);
+        FileDeleteTool fileDeleteTool = new FileDeleteTool();
+        for (int i = 0;i < list.size();i++){
+            Map m = (Map) list.get(i);
+            String url = m.get("fileurl").toString();
+            fileDeleteTool.delFile(url);
+        }
         if ("success".equals(flag)) {
             rest.setMsgType("success");
             rest.setMsg("删除成功！");
@@ -117,17 +124,17 @@ public class VideoController {
     @ResponseBody
     public Rest emptyVideo() {
         Rest rest = new Rest();
-        String flag = videoService.emptyVideo();
-        //if ("1".equals(flag)) {
+        try {
+            String flag = videoService.emptyVideo();
             rest.setMsgType("success");
-            rest.setMsg("删除成功！");
+            rest.setMsg("清空成功！");
             rest.setSuccess(true);
-        /*} else {
+        }catch (Exception e){
             rest.setMsgType("error");
-            rest.setMsg("删除失败！");
+            rest.setMsg("清空失败！");
             rest.setSuccess(false);
-        }*/
-
+            e.printStackTrace();
+        }
         return rest;
     }
 

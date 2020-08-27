@@ -44,7 +44,7 @@ public class VideoServiceImpl implements VideoService {
         String flag;
         //删除当前id在数据库中的记录
         int i = videoDao.deleteVideo(id);
-        //todo:还需根据当前id查询视频保存路径，并进行删除
+        //todo:还需根据当前id查询视频保存路径，并进行删除  ok
         if(i == 1){
             flag = "success";
         }else {
@@ -78,7 +78,7 @@ public class VideoServiceImpl implements VideoService {
         String flag;
         //删除当前id在数据库中的记录
         int i = videoDao.deleteBatchVideo(list);
-        //todo:还需根据当前id查询视频保存路径，并进行删除
+        //todo:还需根据当前id查询视频保存路径，并进行删除  ok
         if(i == list.size()){
             flag = "success";
         }else {

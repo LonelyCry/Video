@@ -66,7 +66,7 @@ public class FileUploadTool {
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
             }
-            //todo:文件名称需要考虑，当上传相同文件名称的文件时怎么处理
+            //todo:文件名称需要考虑，当上传相同文件名称的文件时怎么处理 ok
             int n = fileName.lastIndexOf(".");
             int l = fileName.lastIndexOf("\\") + 1;
             String name = fileName.substring(l,n);
