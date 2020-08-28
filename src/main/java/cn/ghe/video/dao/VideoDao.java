@@ -23,7 +23,7 @@ public interface VideoDao {
 
     int emptyVideo();
 
-    List playVideo(List list);
+    List playVideo();
 
     int queryTotal();
 

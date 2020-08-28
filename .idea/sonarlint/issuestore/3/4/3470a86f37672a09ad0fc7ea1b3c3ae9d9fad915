@@ -1,10 +1,20 @@
 
-dsquid:S1192/"HDefine a constant instead of duplicating this literal "success" 3 times.(İÉ¿Çıÿÿÿÿ
-Nsquid:S1135-"2Complete the task associated to this TODO comment.(²ù¦Şşÿÿÿÿ
-]squid:S11921"FDefine a constant instead of duplicating this literal "false" 3 times.(Ó£½ş
-Nsquid:S1135O"2Complete the task associated to this TODO comment.(²ù¦Şşÿÿÿÿ
-}squid:S1488Z"aImmediately return this expression instead of assigning it to the temporary variable "listVideo".(…Â£üÿÿÿÿ
-hsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²š®c
-Nsquid:S1135:"2Complete the task associated to this TODO comment.(…Ø½¹ıÿÿÿÿ
-usquid:S1488"YImmediately return this expression instead of assigning it to the temporary variable "m".(£©ğùşÿÿÿÿ
-Nsquid:S1135;"2Complete the task associated to this TODO comment.(Ëšªùÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheckG"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(Õ¹ ©ûÿÿÿÿ8½©³şÂ.
+Usquid:S1135="2Complete the task associated to this TODO comment.(Ëšªùÿÿÿÿ8½©³şÂ.
+¢%squid:RedundantThrowsDeclarationCheck"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(ÑÃ¹áøÿÿÿÿ8½†µÚÂ.
+dsquid:S11923"FDefine a constant instead of duplicating this literal "false" 4 times.(Ó£½ş8½©³şÂ.
+¢%squid:RedundantThrowsDeclarationCheckM"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(Öª»şÿÿÿÿ8½©³şÂ.
+%squid:RedundantThrowsDeclarationCheckf"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(€î¹É8½†µÚÂ.
+Osquid:S1135Q"2Complete the task associated to this TODO comment.(Ö¹¾8½©³şÂ.
+¢%squid:RedundantThrowsDeclarationCheck9"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(‡¢ïÓıÿÿÿÿ8½©³şÂ.
+hsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²š®c
+Usquid:S1135<"2Complete the task associated to this TODO comment.(…Ø½¹ıÿÿÿÿ8½©³şÂ.
+¢%squid:RedundantThrowsDeclarationChecka"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(¼ô—íıÿÿÿÿ8½†µÚÂ.
+}squid:S1488\"aImmediately return this expression instead of assigning it to the temporary variable "listVideo".(ß¹àÙıÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheck["eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.( š±øúÿÿÿÿ8½†µÚÂ.
+ksquid:S11921"HDefine a constant instead of duplicating this literal "success" 4 times.(İÉ¿Çıÿÿÿÿ8½©³şÂ.
+usquid:S1488!"YImmediately return this expression instead of assigning it to the temporary variable "m".(£©ğùşÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheck+"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(İ„Ôüÿÿÿÿ8½†µÚÂ.
+¢%squid:RedundantThrowsDeclarationCheck&"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(ˆ»òÑüÿÿÿÿ8½†µÚÂ.
+Hsquid:S1135/"2Complete the task associated to this TODO comment.(Ö¹¾
+¢%squid:RedundantThrowsDeclarationCheckr"eRemove the declaration of thrown exception 'java.lang.RuntimeException' which is a runtime exception.(Â‰¬Èÿÿÿÿÿ8½†µÚÂ.

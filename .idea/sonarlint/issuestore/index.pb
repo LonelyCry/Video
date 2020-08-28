@@ -33,3 +33,9 @@ V
 &src/main/resources/mapper/VideoDao.xml,3\8\3822a8731fd07c353acc9fcce9caf79b4ca8c224
 m
 =src/main/java/cn/ghe/video/service/impl/VideoServiceImpl.java,3\4\3470a86f37672a09ad0fc7ea1b3c3ae9d9fad915
+c
+3src/main/java/cn/ghe/video/common/VideoConvert.java,4\e\4e7373114462bf2e6fb1fd79541183c668ae06ea
+Y
+)src/main/java/cn/ghe/video/common/ee.java,9\1\91c80b5c7adfd7531bfde5d6b361cd3b031363b7
+d
+4src/main/java/cn/ghe/video/service/VideoService.java,1\c\1c3cd7db5d54e1f312d0f5a4cff62f3aad60d853

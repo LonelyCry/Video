@@ -126,6 +126,10 @@ public class VideoController {
         Rest rest = new Rest();
         try {
             String flag = videoService.emptyVideo();
+            String filePath = "D:\\upload\\";
+            System.out.println("开始删除文件");
+            File file = new File(filePath);
+            deleteAllFilesOfDir(file);
             rest.setMsgType("success");
             rest.setMsg("清空成功！");
             rest.setSuccess(true);
@@ -139,23 +143,24 @@ public class VideoController {
     }
 
     @ApiOperation(value = "视频预览", notes = "视频预览")
-    @ApiImplicitParam(name = "incorDO", value = "视频详情实体类主键id数组", required = true, dataType = "IncorDO")
+    //@ApiImplicitParam(name = "incorDO", value = "视频详情实体类主键id数组", required = true, dataType = "IncorDO")
     @RequestMapping(value = "/play", method = RequestMethod.POST)
     @ResponseBody
-    public Rest playVideo(@RequestBody IncorDO incorDO) {
+    public Rest playVideo() {
         Rest rest = new Rest();
         List listVideo = new ArrayList();
-        List values = incorDO.getValues();
-        listVideo = videoService.playVideo(values);
-        if (values.size() == listVideo.size()) {
+        //List values = incorDO.getValues();
+        try {
+            listVideo = videoService.playVideo();
             rest.setSuccess(true);
             rest.setMsgType("success");
             rest.setMsg("视频预览成功！");
             rest.setVideoList(listVideo);
-        } else {
+        } catch (Exception e){
             rest.setSuccess(false);
             rest.setMsg("视频预览失败！");
             rest.setMsgType("error");
+            e.printStackTrace();
         }
         return rest;
     }
@@ -316,7 +321,7 @@ public class VideoController {
 
 
 
-    @RequestMapping(value ="/getFileSrc" ,method = RequestMethod.POST)
+    @RequestMapping(value ="/getFileSrc" ,method = RequestMethod.GET)
     @ResponseBody
     public void getFileSrc(HttpServletRequest request , HttpServletResponse response, @RequestParam(value="path") String path) throws IOException {
         File file = new File(path);
@@ -330,5 +335,19 @@ public class VideoController {
         output.flush();
         output.close();
         input.close();
+    }
+
+    public void deleteAllFilesOfDir(File path) {
+        if (!path.exists())
+            return;
+        if (path.isFile()) {
+            path.delete();
+            return;
+        }
+        File[] files = path.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            deleteAllFilesOfDir(files[i]);
+        }
+        path.delete();
     }
 }

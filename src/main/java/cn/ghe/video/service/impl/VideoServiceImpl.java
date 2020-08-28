@@ -88,8 +88,8 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public List playVideo(List list) throws RuntimeException{
-        List listVideo = videoDao.playVideo(list);
+    public List playVideo() throws RuntimeException{
+        List listVideo = videoDao.playVideo();
         return listVideo;
     }
 

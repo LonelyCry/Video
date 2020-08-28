@@ -1,0 +1,16 @@
+
+^squid:S001125"FDefine and throw a dedicated exception instead of using a generic one.(›ùÎ•
+msquid:UselessImportCheck"BRemove this unused import 'it.sauronsoftware.jave.MultimediaInfo'.(ù´‘‰8¹†µÚÂ.
+¿%squid:RedundantThrowsDeclarationCheck"†Remove the declaration of thrown exception 'org.bytedeco.javacv.FrameRecorder$Exception' which is a subclass of 'java.lang.Exception'.(›ùÎ•8‚ƒ”ŸÂ.
+_squid:S1075"ARefactor your code to get this URI from a customizable parameter.(Ö¾õÍ8¹†µÚÂ.
+Isquid:S1135D"2Complete the task associated to this TODO comment.(±Á¶š
+bsquid:CommentedOutCodeLine9"<This block of commented-out lines of code should be removed.(Á±»
+¿%squid:RedundantThrowsDeclarationCheck5"†Remove the declaration of thrown exception 'org.bytedeco.javacv.FrameRecorder$Exception' which is a subclass of 'java.lang.Exception'.(›ùÎ•8ƒ”ŸÂ.
+O
+squid:S106J"9Replace this use of System.out or System.err by a logger.(¸‘î„
+isquid:CommentedOutCodeLine&"<This block of commented-out lines of code should be removed.(Ó‹¼‡8¹†µÚÂ.
+_squid:S1075"ARefactor your code to get this URI from a customizable parameter.(á¹ž¦8¹†µÚÂ.
+gsquid:CommentedOutCodeLine!"<This block of commented-out lines of code should be removed.(¿œÌøÿÿÿÿ
+ksquid:UselessImportCheck";Remove this unused import 'it.sauronsoftware.jave.Encoder'.(ƒŒáÒýÿÿÿÿ8¹†µÚÂ.
+Tsquid:UselessImportCheck
+")Remove this unused import 'java.io.File'.(†Ð¥Å8¹†µÚÂ.

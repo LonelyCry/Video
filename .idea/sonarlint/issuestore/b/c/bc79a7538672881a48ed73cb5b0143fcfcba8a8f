@@ -1,37 +1,47 @@
 
-nsquid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.( Ëÿÿÿÿÿÿ8š•°¨Á.
-bsquid:S3027Å"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Ì£‹Ë
-Xsquid:S10757"ARefactor your code to get this URI from a customizable parameter.(“­ž¥
-asquid:CommentedOutCodeLine^"<This block of commented-out lines of code should be removed.(®‚Ô
-T
-squid:S106C"9Replace this use of System.out or System.err by a logger.(§ÑÛÏùÿÿÿÿ
+Nsquid:S1135E"2Complete the task associated to this TODO comment.(¨¬ù¯üÿÿÿÿ
+Nsquid:S2093®"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¹†µÚÂ.
+msquid:S00100­"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•å8¹†µÚÂ.
+isquid:CommentedOutCodeLineP"<This block of commented-out lines of code should be removed.(¢µøÆ8¿êÔ€Ã.
 O
-squid:S106J"9Replace this use of System.out or System.err by a logger.(„Áõ…
-[squid:S2147Q"DCombine this catch with the one at line 79, which has the same body.(ï­£Ä
-bsquid:S2184"FCast one of the operands of this multiplication operation to a "long".(×Àš÷þÿÿÿÿ
-dsquid:S1075:"ARefactor your code to get this URI from a customizable parameter.(ÅÝÇÑúÿÿÿÿ8š•°¨Á.
-isquid:CommentedOutCodeLine8"<This block of commented-out lines of code should be removed.(¡Ò¬¯8š•°¨Á.
-nsquid:CommentedOutCodeLine<"<This block of commented-out lines of code should be removed.(È³Îíÿÿÿÿÿ8š•°¨Á.
-hsquid:CommentedOutCodeLinec"<This block of commented-out lines of code should be removed.(ŒËÜT8š•°¨Á.
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(¯ÝÇßùÿÿÿÿ
-Qsquid:S1172".Remove this unused method parameter "request".(¯ÝÇßùÿÿÿÿ8š•°¨Á.
-?squid:S1148R"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+squid:S1060"9Replace this use of System.out or System.err by a logger.(–ºƒ
+nsquid:S3776!"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(¯ÝÇßùÿÿÿÿ
+nsquid:S3027G"KPut single-quotes around '\\' to use the faster "lastIndexOf(char)" method.(°ýäÃùÿÿÿÿ8¹†µÚÂ.
+Tsquid:S1481q"1Remove this unused "finalFileDir" local variable.(š×ºõýÿÿÿÿ8š•°¨Á.
+Xsquid:S1075;"ARefactor your code to get this URI from a customizable parameter.(“­ž¥
+_squid:UnusedPrivateMethodã"3Remove this unused private "checkMediaType" method.(ú·ð8¹†µÚÂ.
+usquid:S3008"YRename this field "upload_maxsize" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Àš÷þÿÿÿÿ
+xsquid:S2234["ZParameters to copyFile have the same names but not the same order as the method arguments.(–¢è‘8¹†µÚÂ.
+Gsquid:S1148¾"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8¹†µÚÂ.
+bsquid:S2184"FCast one of the operands of this multiplication operation to a "long".(×Àš÷þÿÿÿÿ
+osquid:CommentedOutCodeLine—"<This block of commented-out lines of code should be removed.( Ëÿÿÿÿÿÿ8š•°¨Á.
+bsquid:S3027…"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(Ì£‹Ë
+csquid:UnusedPrivateMethodô"1Remove this unused private "checkAVIType" method.(úéÌŠüÿÿÿÿ8¹†µÚÂ.
 T
-squid:S1064"9Replace this use of System.out or System.err by a logger.(™ÿ¥²þÿÿÿÿ
-isquid:S1858 "M"getOriginalFilename" returns a string, there's no need to call "toString()".(ªßºçÿÿÿÿÿ
+squid:S106I"9Replace this use of System.out or System.err by a logger.(§ÑÛÏùÿÿÿÿ
+[
+squid:S106`"9Replace this use of System.out or System.err by a logger.(¡ûýÇûÿÿÿÿ8¹†µÚÂ.
+Qsquid:S1172!".Remove this unused method parameter "request".(¯ÝÇßùÿÿÿÿ8š•°¨Á.
 O
-squid:S106,"9Replace this use of System.out or System.err by a logger.(–ºƒ
-usquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ÝÇßùÿÿÿÿ8š•°¨Á.
-?squid:S1148x"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-usquid:S3008"YRename this field "upload_maxsize" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Àš÷þÿÿÿÿ
-{squid:S1488Ñ"cImmediately return this expression instead of assigning it to the temporary variable "newFileName".(ê¿ð—
-fsquid:S3027B"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(¥Ã‘£úÿÿÿÿ
-nsquid:CommentedOutCodeLinep"<This block of commented-out lines of code should be removed.(Ûß¹‡ûÿÿÿÿ8š•°¨Á.
-Tsquid:S1481X"1Remove this unused "finalFileDir" local variable.(š×ºõýÿÿÿÿ8š•°¨Á.
-?squid:S1148P"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-_squid:S1075r"ARefactor your code to get this URI from a customizable parameter.(­´–‹8š•°¨Á.
-nsquid:CommentedOutCodeLinee"<This block of commented-out lines of code should be removed.(«Ì‰›ùÿÿÿÿ8š•°¨Á.
-Isquid:S1135A"2Complete the task associated to this TODO comment.(¬œþ‚
+squid:S106T"9Replace this use of System.out or System.err by a logger.(„Áõ…
 N
-squid:S1060"9Replace this use of System.out or System.err by a logger.(³ÈÓF
-dsquid:S1075d"ARefactor your code to get this URI from a customizable parameter.(”“ƒÑþÿÿÿÿ8š•°¨Á.
+squid:S1064"9Replace this use of System.out or System.err by a logger.(³ÈÓF
+@squid:S1148¸"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+msquid:S3027F"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(¸ë¹åýÿÿÿÿ8¹†µÚÂ.
+?squid:S1148i"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+isquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(·í’g8¹†µÚÂ.
+csquid:S2147j"ECombine this catch with the one at line 104, which has the same body.(”ý¾8¹†µÚÂ.
+isquid:CommentedOutCodeLine<"<This block of commented-out lines of code should be removed.(¡Ò¬¯8š•°¨Á.
+nsquid:CommentedOutCodeLine@"<This block of commented-out lines of code should be removed.(È³Îíÿÿÿÿÿ8¹†µÚÂ.
+Dsquid:S1075S"&Remove this hard-coded path-delimiter.(Åöª£8ƒ‚Ö€Ã.
+isquid:S1858$"M"getOriginalFilename" returns a string, there's no need to call "toString()".(ªßºçÿÿÿÿÿ
+[
+squid:S1068"9Replace this use of System.out or System.err by a logger.(™ÿ¥²þÿÿÿÿ8¹†µÚÂ.
+asquid:CommentedOutCodeLinew"<This block of commented-out lines of code should be removed.(®‚Ô
+usquid:S00117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ÝÇßùÿÿÿÿ8š•°¨Á.
+?squid:S1148k"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Gsquid:S1148Å"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8¹†µÚÂ.
+{squid:S1488‘"cImmediately return this expression instead of assigning it to the temporary variable "newFileName".(ê¿ð—
+Gsquid:S1148¼"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8¹†µÚÂ.
+^squid:UnusedPrivateMethodŒ",Remove this unused private "getName" method.(É¥ Œûÿÿÿÿ8¹†µÚÂ.
+dsquid:S1075>"ARefactor your code to get this URI from a customizable parameter.(ÅÝÇÑúÿÿÿÿ8š•°¨Á.

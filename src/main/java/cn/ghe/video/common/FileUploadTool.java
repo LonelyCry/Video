@@ -77,8 +77,10 @@ public class FileUploadTool {
             // 文件扩展名
             String fileEnd = this.getFileExt(fileName);
             // 绝对路径
-            String oldNamedirs = logoRealPathDir + File.separator + name + fileEnd;
-            String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;
+            /*String oldNamedirs = logoRealPathDir + File.separator + name + fileEnd;
+            String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;*/
+            String oldNamedirs = logoRealPathDir + "/" + name + fileEnd;
+            String fileNamedirs = logoRealPathDir + "/" + newFileName + fileEnd;
             System.out.println("保存的绝对路径：" + fileNamedirs);
             File filedirs = new File(fileNamedirs);
             File oldfiledirs = new File(oldNamedirs);

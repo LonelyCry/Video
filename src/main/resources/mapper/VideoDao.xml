@@ -18,7 +18,7 @@
         select id,name,ordernum,
             duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
             createtime,oldname,newname,fileurl
-        from video
+        from video ORDER by cast(ordernum as signed integer)
         limit ${start_num},${pageSize}
     </select>
 
@@ -70,9 +70,6 @@
         select id,name,ordernum,
         duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
         createtime,oldname,newname,fileurl
-        from video where id in
-        <foreach collection="list"  item="item" open="(" separator="," close=")" >
-            #{item}
-        </foreach>
+        from video ORDER by cast(ordernum as signed integer)
     </select>
 </mapper>

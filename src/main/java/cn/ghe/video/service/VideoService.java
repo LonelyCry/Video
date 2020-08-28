@@ -19,7 +19,7 @@ public interface VideoService {
 
     String deleteBatchVideo(List list);
 
-    List playVideo(List list);
+    List playVideo();
 
     int queryTotal();
 

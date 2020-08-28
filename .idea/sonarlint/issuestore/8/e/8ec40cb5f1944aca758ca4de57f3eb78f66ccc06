@@ -1,60 +1,39 @@
 
-nsquid:S4488Ì"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(¥èÛúÿÿÿÿ8™öˆÂ.
-nsquid:S11926"PDefine a constant instead of duplicating this literal "åˆ é™¤æˆåŠŸï¼" 3 times.(­Å”Ş8™öˆÂ.
-V
-squid:S1062"9Replace this use of System.out or System.err by a logger.(„´³ã8™öˆÂ.
-\
-squid:S106×"9Replace this use of System.out or System.err by a logger.(ú´˜àûÿÿÿÿ8™öˆÂ.
-[
-squid:S106["9Replace this use of System.out or System.err by a logger.(º‘æõúÿÿÿÿ8†ƒ’·À.
-isquid:S4488š"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÿÖ»—8™öˆÂ.
-isquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(åœ¡8™öˆÂ.
-isquid:S3027Ò"JPut single-quotes around '.' to use the faster "lastIndexOf(char)" method.(æá 8™öˆÂ.
-W
-squid:S106¼"9Replace this use of System.out or System.err by a logger.(ØÌöò8™öˆÂ.
-W
-squid:S106Ì"9Replace this use of System.out or System.err by a logger.(äş„8™öˆÂ.
-squid:S1488k"\Immediately return this expression instead of assigning it to the temporary variable "flag".(É“€³ûÿÿÿÿ8™öˆÂ.
-hsquid:S4488h"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÂªÔ¢8™öˆÂ.
-hsquid:S2674Ó"JCheck the return value of the "read" call to see how many bytes were read.(ÂĞÔS8™öˆÂ.
-nsquid:S4488„"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ÆîÀüÿÿÿÿ8™öˆÂ.
-osquid:CommentedOutCodeLine¿"<This block of commented-out lines of code should be removed.( ßòÿÿÿÿÿ8™öˆÂ.
+msquid:S4488_"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ªÕòşÿÿÿÿ8Ü‰³şÂ.
+nsquid:S4488“"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ÆîÀüÿÿÿÿ8™öˆÂ.
+Msquid:S1481€")Remove this unused "flag" local variable.(ºŸ¬–üÿÿÿÿ8Ü‰³şÂ.
+hsquid:S4488p"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÂªÔ¢8Ü‰³şÂ.
 bsquid:CallToDeprecatedMethod"3Remove this use of "description"; it is deprecated.(ÔŸÛ8™öˆÂ.
-^
-squid:S899Å";Do something with the "boolean" value returned by "delete".(†ëèÉøÿÿÿÿ8™öˆÂ.
-msquid:S4488T"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ªÕòşÿÿÿÿ8™öˆÂ.
-Isquid:S1481Ò"*Remove this unused "split" local variable.(æá 8™öˆÂ.
-msquid:S4488p"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ã§¯ûÿÿÿÿ8™öˆÂ.
-isquid:S11929"FDefine a constant instead of duplicating this literal "error" 5 times.(Ç§Ô·üÿÿÿÿ8™öˆÂ.
-msquid:S4042Å"IUse "java.nio.Files#delete" here for better messages on error conditions.(†ëèÉøÿÿÿÿ8™öˆÂ.
-squid:S1488¶"]Immediately return this expression instead of assigning it to the temporary variable "total".(§ÀÍûÿÿÿÿ8™öˆÂ.
-[
-squid:S106\"9Replace this use of System.out or System.err by a logger.(ã¿¢Ôùÿÿÿÿ8™öˆÂ.
-Rsquid:EmptyStatementUsageCheckt"Remove this empty statement.(Åñ­õşÿÿÿÿ8™öˆÂ.
-fsquid:S11925"HDefine a constant instead of duplicating this literal "success" 5 times.(­„Ôè8™öˆÂ.
-\
-squid:S106Š"9Replace this use of System.out or System.err by a logger.(†ò»áùÿÿÿÿ8™öˆÂ.
-nsquid:S1192:"PDefine a constant instead of duplicating this literal "åˆ é™¤å¤±è´¥ï¼" 3 times.(âªÑ8™öˆÂ.
+vsquid:S00117°"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ˜Ô“ÿÿÿÿÿ8¢™ÿÂ.
+Gsquid:S1148ï"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¢™ÿÂ.
 W
-squid:S106Ç"9Replace this use of System.out or System.err by a logger.(Â±ñ‹8™öˆÂ.
-jsquid:S1858Ã"K"filePath" is already a string, there's no need to call "toString()" on it.(¶8™öˆÂ.
-W
-squid:S106Œ"9Replace this use of System.out or System.err by a logger.(ù‘´å8™öˆÂ.
-\
-squid:S106»"9Replace this use of System.out or System.err by a logger.(îÙê€úÿÿÿÿ8™öˆÂ.
-[
-squid:S106X"9Replace this use of System.out or System.err by a logger.(¬—˜ÿûÿÿÿÿ8™öˆÂ.
-gsquid:S4488."JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(…½‹68™öˆÂ.
-Gsquid:S1148È"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8™öˆÂ.
+squid:S106‚"9Replace this use of System.out or System.err by a logger.(·ğ½Ã8èßÏÿÂ.
+msquid:S4488{"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ã§¯ûÿÿÿÿ8Ü‰³şÂ.
+msquid:S4042Ø"IUse "java.nio.Files#delete" here for better messages on error conditions.(”ñ¬õıÿÿÿÿ8†ŠÖÿÂ.
+osquid:CommentedOutCodeLine˜"<This block of commented-out lines of code should be removed.(² Ò¾ıÿÿÿÿ8Õí•ÿÂ.
+hsquid:S4488E"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±ìüı8Ü‰³şÂ.
+Qsquid:S1481u".Remove this unused "listVideo" local variable.(Æ‘°ıÿÿÿÿ8Ü‰³şÂ.
+`squid:S1075"ARefactor your code to get this URI from a customizable parameter.(´üğ«8èßÏÿÂ.
+msquid:S4042ß"IUse "java.nio.Files#delete" here for better messages on error conditions.(”ñ¬õıÿÿÿÿ8†ŠÖÿÂ.
 msquid:S4488%"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ø¶åƒüÿÿÿÿ8™öˆÂ.
-hsquid:S4488B"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(±ìüı8™öˆÂ.
-vsquid:S00117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ˜Ô“ÿÿÿÿÿ8™öˆÂ.
-Gsquid:S1148ë"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8™öˆÂ.
+isquid:CommentedOutCodeLines"<This block of commented-out lines of code should be removed.(€›¶˜8Ü‰³şÂ.
+osquid:CommentedOutCodeLine¼"<This block of commented-out lines of code should be removed.( ßòÿÿÿÿÿ8¢™ÿÂ.
+Gsquid:S1148Œ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ü‰³şÂ.
+osquid:CommentedOutCodeLineı"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ8¢™ÿÂ.
+Nsquid:S1481v"+Remove this unused "values" local variable.(ÃÏØúÿÿÿÿ8Ü‰³şÂ.
+squid:S1488¾"]Immediately return this expression instead of assigning it to the temporary variable "total".(§ÀÍûÿÿÿÿ8¢™ÿÂ.
+isquid:S4488¨"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÿÖ»—8¢™ÿÂ.
+gsquid:S4488Ä"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(É¡Âÿ8¢™ÿÂ.
+fsquid:S11927"HDefine a constant instead of duplicating this literal "success" 9 times.(µÈ˜“8·†µÚÂ.
+isquid:S1192<"FDefine a constant instead of duplicating this literal "error" 5 times.(Ç§Ô·üÿÿÿÿ8™öˆÂ.
+gsquid:S4488."JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(…½‹68™öˆÂ.
+isquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(åœ¡8™öˆÂ.
+Gsquid:S1148£"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¢™ÿÂ.
+hsquid:S2674Ë"JCheck the return value of the "read" call to see how many bytes were read.(ÂĞÔS8¢™ÿÂ.
 \
-squid:S106Î"9Replace this use of System.out or System.err by a logger.(—¬Ùıÿÿÿÿ8™öˆÂ.
-\
-squid:S106Ó"9Replace this use of System.out or System.err by a logger.(ºƒúÿÿÿÿ8™öˆÂ.
-jsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(¥õ°Û8™öˆÂ.
-osquid:CommentedOutCodeLineù"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ8™öˆÂ.
-\
-squid:S106¯"9Replace this use of System.out or System.err by a logger.(‘è°şÿÿÿÿ8™öˆÂ.
+squid:S106®"9Replace this use of System.out or System.err by a logger.(‘è°şÿÿÿÿ8¢™ÿÂ.
+Lsquid:S1481t")Remove this unused "rest" local variable.(éÎºşÿÿÿÿ8Ü‰³şÂ.
+^
+squid:S899Ø";Do something with the "boolean" value returned by "delete".(”ñ¬õıÿÿÿÿ8†ŠÖÿÂ.
+^
+squid:S899ß";Do something with the "boolean" value returned by "delete".(”ñ¬õıÿÿÿÿ8†ŠÖÿÂ.

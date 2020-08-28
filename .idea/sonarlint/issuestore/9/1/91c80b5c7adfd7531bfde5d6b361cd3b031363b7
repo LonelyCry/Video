@@ -1,0 +1,52 @@
+
+Jsquid:S1481x"'Remove this unused "ss" local variable.(­ìïåøÿÿÿÿ8»†µÚÂ.
+Gsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ï›˜ìÂ.
+nsquid:CommentedOutCodeLiney"<This block of commented-out lines of code should be removed.(Ú¤®ùÿÿÿÿ8»†µÚÂ.
+[
+squid:S106q"9Replace this use of System.out or System.err by a logger.(ğ°·ƒşÿÿÿÿ8»†µÚÂ.
+V
+squid:S106†"9Replace this use of System.out or System.err by a logger.(À©=8»†µÚÂ.
+isquid:CommentedOutCodeLine}"<This block of commented-out lines of code should be removed.(Èˆ€©8»†µÚÂ.
+gsquid:CommentedOutCodeLine&"<This block of commented-out lines of code should be removed.(ñ‹Í×üÿÿÿÿ
+Dsquid:S2129Z"!Remove this "Integer" constructor(ÄÎÖüÿÿÿÿ8»†µÚÂ.
+[
+squid:S106|"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8»†µÚÂ.
+[
+squid:S106p"9Replace this use of System.out or System.err by a logger.(×—¡éøÿÿÿÿ8»†µÚÂ.
+nsquid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(˜€Ôøÿÿÿÿ8»†µÚÂ.
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ï¥ëíıÿÿÿÿ
+[
+squid:S106v"9Replace this use of System.out or System.err by a logger.(÷í£Ãşÿÿÿÿ8»†µÚÂ.
+Gsquid:S1148‰"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8»†µÚÂ.
+jsquid:CommentedOutCodeLine—"<This block of commented-out lines of code should be removed.(Óüµ8»†µÚÂ.
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÒÓ”Çıÿÿÿÿ8»†µÚÂ.
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ÿö†‡ıÿÿÿÿ8»†µÚÂ.
+\
+squid:S106‹"9Replace this use of System.out or System.err by a logger.(ÉûòÖüÿÿÿÿ8»†µÚÂ.
+[
+squid:S106t"9Replace this use of System.out or System.err by a logger.(…Û–âûÿÿÿÿ8»†µÚÂ.
+[
+squid:S106r"9Replace this use of System.out or System.err by a logger.(É §šıÿÿÿÿ8»†µÚÂ.
+^squid:S1075˜"ARefactor your code to get this URI from a customizable parameter.(€çöïüÿÿÿÿ
+[
+squid:S106n"9Replace this use of System.out or System.err by a logger.(¡ûıÇûÿÿÿÿ8»†µÚÂ.
+^squid:S1075–"ARefactor your code to get this URI from a customizable parameter.(³–¶†üÿÿÿÿ
+esquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ü¦®ó
+[
+squid:S106u"9Replace this use of System.out or System.err by a logger.(›³´¦şÿÿÿÿ8»†µÚÂ.
+Nsquid:S1481V"+Remove this unused "target" local variable.(±Ö£öùÿÿÿÿ8»†µÚÂ.
+[
+squid:S106s"9Replace this use of System.out or System.err by a logger.(ö©•áıÿÿÿÿ8»†µÚÂ.
+Dsquid:S2129["!Remove this "Integer" constructor(ËòÔÚùÿÿÿÿ8»†µÚÂ.
+Dsquid:S2129a"!Remove this "Integer" constructor(†Ïúÿÿÿÿ8»†µÚÂ.
+V
+squid:S106o"9Replace this use of System.out or System.err by a logger.(¿øÀµ8»†µÚÂ.
+Dsquid:S1481w"&Remove this unused "s" local variable.(ü°£8»†µÚÂ.
+?squid:S2129b"!Remove this "Integer" constructor(â–ÃÆ8»†µÚÂ.
+W
+squid:S106ˆ"9Replace this use of System.out or System.err by a logger.(¹¦©Í8»†µÚÂ.
+hsquid:CommentedOutCodeLineS"<This block of commented-out lines of code should be removed.(İÇı
+8»†µÚÂ.
+Gsquid:S1148Œ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ï›˜ìÂ.
