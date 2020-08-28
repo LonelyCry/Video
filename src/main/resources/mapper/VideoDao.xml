@@ -34,7 +34,7 @@
         value(#{name},#{ordernum},#{duration},#{uploadTime},#{uploadTime},#{path},#{titleOrig},#{titleAlter})
     </insert>
 
-    <update id="updateVideo" parameterType="cn.ghe.video.bean.VideoDO">
+    <update id="updateVideo" parameterType="Map">
         update video
             <set>
                 <if test="name!=null">name=#{name},</if>
@@ -42,6 +42,7 @@
                 <if test="file_url!=null">fileurl=#{fileurl}</if>
                 <if test="oldname!=null">oldname=#{oldname}</if>
                 <if test="newname!=null">newname=#{newname}</if>
+                <if test="duration!=null">duration=#{duration}</if>
             </set>
         where id = #{id}
     </update>

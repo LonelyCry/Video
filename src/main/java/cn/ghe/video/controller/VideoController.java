@@ -108,15 +108,65 @@ public class VideoController {
     }
 
     @ApiOperation(value = "更新视频", notes = "更新视频")
-    @ApiImplicitParam(name = "incorDO", value = "测试", required = true, dataType = "IncorDO")
-    @RequestMapping(value = "/updateVideo", method = RequestMethod.POST)
+    //@ApiImplicitParam(name = "incorDO", value = "测试", required = true, dataType = "IncorDO")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateVideo(@RequestBody IncorDO incorDO) {
-        //String flag = videoService.updateVideo(videoDO);
+    public Rest updateVideo(@RequestParam(value = "filevideo", required = false) MultipartFile multipartFile,
+                              HttpServletRequest request) {
+        StandardMultipartHttpServletRequest httpServletRequest = (StandardMultipartHttpServletRequest) request;
+        Enumeration<String> parameterNames = httpServletRequest.getParameterNames();
         Rest rest = new Rest();
-        List listVideo = new ArrayList();
-        List values = incorDO.getValues();
-        return "flag";
+        System.out.println("-------------------ParameterNames------------------");
+        Map map = new HashMap();
+        String message = "";
+        while (parameterNames.hasMoreElements()) {
+            String key = parameterNames.nextElement();
+            String value = httpServletRequest.getParameter(key);
+            map.put(key,value);
+        }
+        try {
+            String flag = "";
+            String ordernum = map.get("ordernum").toString();
+            if(!"".equals(ordernum)){
+                flag = videoService.queryByordernum(ordernum);
+            }
+            if ("success".equals(flag)){
+                if ("1".equals(map.get("changefile"))){
+                    videoService.updateVideo(map);
+                }else {
+                    FileEntity entity = new FileEntity();
+                    FileUploadTool fileUploadTool = new FileUploadTool();
+                    FileDeleteTool fileDeleteTool = new FileDeleteTool();
+                    fileDeleteTool.delFile(map.get("fileurl").toString());
+                    entity = fileUploadTool.createFile(multipartFile, request, ordernum);
+                    if (entity != null && "success".equals(flag)) {
+                        map.put("duration",entity.getDuration());
+                        map.put("uploadtime",entity.getUploadTime());
+                        map.put("fileurl",entity.getPath());
+                        map.put("oldname",entity.getTitleOrig());
+                        map.put("newname",entity.getTitleAlter());
+                        videoService.updateVideo(map);
+                        message = "更新成功";
+                        rest.setSuccess(true);
+                        rest.setMsgType("success");
+                    } else {
+                        rest.setSuccess(false);
+                        rest.setMsgType("error");
+                    }
+                }
+            }else {
+                message = "序号已经存在，请修改！";
+                rest.setSuccess(false);
+                rest.setMsgType("error");
+            }
+        } catch (Exception e) {
+            message = "更新失败";
+            rest.setSuccess(false);
+            rest.setMsgType("error");
+            e.printStackTrace();
+        }
+        rest.setMsg(message);
+        return rest;
     }
 
     @ApiOperation(value = "清空数据", notes = "清空数据")
@@ -127,6 +177,7 @@ public class VideoController {
         try {
             String flag = videoService.emptyVideo();
             String filePath = "D:\\upload\\";
+            //String filePath = "/video/upload/;
             System.out.println("开始删除文件");
             File file = new File(filePath);
             deleteAllFilesOfDir(file);

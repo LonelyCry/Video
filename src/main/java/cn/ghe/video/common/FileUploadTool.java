@@ -56,12 +56,12 @@ public class FileUploadTool {
             System.out.println("文件为空");
         }
         if (bflag) {
-            String logoPathDir = "/video/";
+            //String logoPathDir = "/video/upload/";
             //String logoRealPathDir = request.getSession().getServletContext().getRealPath(logoPathDir);
             // 上传到本地磁盘
             String logoRealPathDir = "D:/upload";
             //linux文件
-            //String logoRealPathDir = "video" + File.separator + "file";
+            //String logoRealPathDir = "video" + File.separator + "upload";
             File logoSaveFile = new File(logoRealPathDir);
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
@@ -108,9 +108,9 @@ public class FileUploadTool {
             }
             // 相对路径
             entity.setType(fileEnd);
-            String fileDir = logoPathDir + newFileName + fileEnd;
+            /*String fileDir = logoPathDir + newFileName + fileEnd;
             StringBuilder builder = new StringBuilder(fileDir);
-            String finalFileDir = builder.substring(1);
+            String finalFileDir = builder.substring(1);*/
             // size存储为String
             String size = this.getSize(filedirs);
             // 源文件保存路径

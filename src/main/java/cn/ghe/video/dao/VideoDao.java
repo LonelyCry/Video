@@ -17,7 +17,7 @@ public interface VideoDao {
 
     void addVideo(FileEntity entity);
 
-    int updateVideo(VideoDO videoDO);
+    int updateVideo(Map map);
 
     int deleteBatchVideo(List list);
 

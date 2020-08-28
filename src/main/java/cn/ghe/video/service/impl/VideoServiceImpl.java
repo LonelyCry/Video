@@ -2,7 +2,6 @@ package cn.ghe.video.service.impl;
 
 import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
-import cn.ghe.video.bean.VideoDO;
 import cn.ghe.video.dao.VideoDao;
 import cn.ghe.video.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +53,9 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public String updateVideo(VideoDO videoDO) throws RuntimeException{
+    public String updateVideo(Map map) throws RuntimeException{
         String flag;
-        int i = videoDao.updateVideo(videoDO);
+        int i = videoDao.updateVideo(map);
         //todo:视频时长，更新时间
         //todo:时候重新上传了视频，是：需要先找到以前的视频进行删除，在进行视频更新，否：进行其余字段更新
         if(i == 1){

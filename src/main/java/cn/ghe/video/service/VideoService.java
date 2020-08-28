@@ -2,9 +2,9 @@ package cn.ghe.video.service;
 
 import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
-import cn.ghe.video.bean.VideoDO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface VideoService {
     List queryVideo(IncorDO name);
@@ -13,7 +13,7 @@ public interface VideoService {
 
     String deleteVideo(int id);
 
-    String updateVideo(VideoDO videoDO);
+    String updateVideo(Map map);
 
     String emptyVideo();
 
