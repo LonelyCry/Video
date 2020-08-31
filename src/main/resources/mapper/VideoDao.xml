@@ -27,22 +27,30 @@
         from video
         where ordernum = ${ordernum}
     </select>
+
+    <select id="queryByid" resultType="Integer" parameterType="Map">
+        select count(ordernum)
+        from video
+        where id = ${id}
+        and ordernum = ${ordernum}
+    </select>
     
     <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.FileEntity">
         insert into
         video(name,ordernum,duration,uploadtime,createtime,fileurl,oldname,newname)
-        value(#{name},#{ordernum},#{duration},#{uploadTime},#{uploadTime},#{path},#{titleOrig},#{titleAlter})
+        value(#{name},#{ordernum},#{duration},#{createTime},#{createTime},#{path},#{titleOrig},#{titleAlter})
     </insert>
 
     <update id="updateVideo" parameterType="Map">
         update video
             <set>
                 <if test="name!=null">name=#{name},</if>
-                <if test="order_num!=null">ordernum=#{ordernum},</if>
-                <if test="file_url!=null">fileurl=#{fileurl}</if>
-                <if test="oldname!=null">oldname=#{oldname}</if>
-                <if test="newname!=null">newname=#{newname}</if>
-                <if test="duration!=null">duration=#{duration}</if>
+                <if test="ordernum!=null">ordernum=#{ordernum},</if>
+                <if test="fileurl!=null">fileurl=#{fileurl},</if>
+                <if test="oldname!=null">oldname=#{oldname},</if>
+                <if test="newname!=null">newname=#{newname},</if>
+                <if test="duration!=null">duration=#{duration},</if>
+                <if test="uploadtime!=null">uploadtime=#{uploadtime}</if>
             </set>
         where id = #{id}
     </update>

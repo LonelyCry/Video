@@ -8,28 +8,49 @@
         from video
     </select>
 
+    <select id="queryFileUrl" resultType="String" parameterType="Integer">
+        select fileurl
+        from video
+        where id = ${id}
+    </select>
+
     <select id="queryVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,ordernum,
             duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
-            createtime,oldname,newname
-        from video
+            createtime,oldname,newname,fileurl
+        from video ORDER by cast(ordernum as signed integer)
         limit ${start_num},${pageSize}
+    </select>
+
+    <select id="queryByordernum" resultType="Integer" parameterType="String">
+        select count(ordernum)
+        from video
+        where ordernum = ${ordernum}
+    </select>
+
+    <select id="queryByid" resultType="Integer" parameterType="Map">
+        select count(ordernum)
+        from video
+        where id = ${id}
+        and ordernum = ${ordernum}
     </select>
     
     <insert id="addVideo" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="cn.ghe.video.bean.FileEntity">
         insert into
         video(name,ordernum,duration,uploadtime,createtime,fileurl,oldname,newname)
-        value(#{name},#{ordernum},#{duration},#{uploadTime},#{uploadTime},#{path},#{titleOrig},#{titleAlter})
+        value(#{name},#{ordernum},#{duration},#{createTime},#{createTime},#{path},#{titleOrig},#{titleAlter})
     </insert>
 
-    <update id="updateVideo" parameterType="cn.ghe.video.bean.VideoDO">
+    <update id="updateVideo" parameterType="Map">
         update video
             <set>
                 <if test="name!=null">name=#{name},</if>
-                <if test="order_num!=null">ordernum=#{ordernum},</if>
-                <if test="file_url!=null">fileurl=#{fileurl}</if>
-                <if test="oldname!=null">oldname=#{oldname}</if>
-                <if test="newname!=null">newname=#{newname}</if>
+                <if test="ordernum!=null">ordernum=#{ordernum},</if>
+                <if test="fileurl!=null">fileurl=#{fileurl},</if>
+                <if test="oldname!=null">oldname=#{oldname},</if>
+                <if test="newname!=null">newname=#{newname},</if>
+                <if test="duration!=null">duration=#{duration},</if>
+                <if test="uploadtime!=null">uploadtime=#{uploadtime}</if>
             </set>
         where id = #{id}
     </update>
@@ -57,10 +78,7 @@
     <select id="playVideo" resultType="cn.ghe.video.bean.VideoDO">
         select id,name,ordernum,
         duration,DATE_FORMAT(uploadtime,'%Y-%m-%d %H:%i:%s') as uploadtime,
-        createtime,oldname,newname
-        from video id in
-        <foreach collection="list"  item="item" open="(" separator="," close=")" >
-            #{item}
-        </foreach>
+        createtime,oldname,newname,fileurl
+        from video ORDER by cast(ordernum as signed integer)
     </select>
 </mapper>

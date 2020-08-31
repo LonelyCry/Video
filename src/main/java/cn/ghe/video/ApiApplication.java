@@ -28,9 +28,9 @@ public class ApiApplication extends SpringBootServletInitializer {
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         //文件最大10M,DataUnit提供5中类型B,KB,MB,GB,TB
-        factory.setMaxFileSize(DataSize.of(500, DataUnit.MEGABYTES));
+        factory.setMaxFileSize(DataSize.of(2048, DataUnit.MEGABYTES));
         // 设置总上传数据总大小10M
-        factory.setMaxRequestSize(DataSize.of(1000, DataUnit.MEGABYTES));
+        factory.setMaxRequestSize(DataSize.of(4096, DataUnit.MEGABYTES));
         return factory.createMultipartConfig();
     }
 }

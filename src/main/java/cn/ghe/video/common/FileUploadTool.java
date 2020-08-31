@@ -6,13 +6,12 @@ import it.sauronsoftware.jave.MultimediaInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 
 public class FileUploadTool {
@@ -106,6 +105,7 @@ public class FileUploadTool {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             // 相对路径
             entity.setType(fileEnd);
             /*String fileDir = logoPathDir + newFileName + fileEnd;
@@ -148,13 +148,16 @@ public class FileUploadTool {
                 String duration = ReadVideoTime(fileNamedirs);
                 entity.setDuration(duration);
                 entity.setSize(size);
-                //entity.setPath(finalFileDir);
+                entity.setOldpath(oldNamedirs);
                 entity.setPath(fileNamedirs);
                 entity.setTitleOrig(name);
                 entity.setTitleAlter(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                Date date = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置时间显示格式
+                String createTime = sdf.format(date);  //将当前时间格式化为需要的类型
                 entity.setUploadTime(timestamp);
-
+                entity.setCreateTime(createTime);
                 return entity;
             } else {
                 return null;
@@ -164,6 +167,39 @@ public class FileUploadTool {
         }
 
     }
+
+    public void qtFile(String fileNamedirs, String oldNamedirs) throws IOException {
+        String ruti = "cmd /c start ";
+        String qt = "D://luzhou//qt-faststart.exe ";
+        String s = "";
+        Runtime runtime=Runtime.getRuntime();
+        s = ruti + qt + fileNamedirs + " " + oldNamedirs;
+        System.out.println("1");
+        Process process = runtime.exec(s);
+        System.out.println("执行完毕");
+
+        //关闭流释放资源
+        if(process != null){
+            process.getOutputStream().close();
+        }
+
+
+        InputStream in = process.getInputStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        String tmp = null;
+        while ((tmp = br.readLine()) != null) {
+
+        }
+        File file = new File(oldNamedirs);
+        FileDeleteTool fileDeleteTool = new FileDeleteTool();
+        System.out.println(file.exists());
+        if(file.exists()){
+            fileDeleteTool.delFile(fileNamedirs);
+            file.renameTo(new File(fileNamedirs));
+            System.out.println("renameToNew--------------------");
+        }
+    }
+
 
     private void copyFile(String fileNamedirs, String oldNamedirs) {
         File f1=new File(fileNamedirs);

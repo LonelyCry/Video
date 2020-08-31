@@ -14,10 +14,12 @@ public class FileEntity {
     private String duration;
     private String type;
     private String size;
+    private String oldpath;
     private String path;
     private String titleOrig;
     private String titleAlter;
     private Timestamp uploadTime;
+    private String createTime;
 
     public String getOrdernum() {
         return ordernum;
@@ -78,5 +80,21 @@ public class FileEntity {
     }
     public void setUploadTime(Timestamp uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getOldpath() {
+        return oldpath;
+    }
+
+    public void setOldpath(String oldpath) {
+        this.oldpath = oldpath;
     }
 }

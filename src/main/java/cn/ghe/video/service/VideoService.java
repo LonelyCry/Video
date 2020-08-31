@@ -2,28 +2,33 @@ package cn.ghe.video.service;
 
 import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
+import cn.ghe.video.bean.Rest;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
 public interface VideoService {
-    List queryVideo(IncorDO name);
+    List queryVideo(IncorDO name) throws Exception;
 
-    void addVideo(FileEntity entity);
+    void addVideo(FileEntity entity) throws Exception;
 
-    String deleteVideo(int id);
+    String deleteVideo(IncorDO incorDO) throws Exception;
 
-    String updateVideo(Map map);
+    String emptyVideo() throws Exception;
 
-    String emptyVideo();
+    String deleteBatchVideo(IncorDO incorDO) throws Exception;
 
-    String deleteBatchVideo(List list);
+    List playVideo() throws Exception;
 
-    List playVideo();
+    int queryTotal() throws Exception;
 
-    int queryTotal();
+    String queryByordernum(String order_num) throws Exception;
 
-    String queryByordernum(String order_num);
+    String queryFileUrl(int id) throws Exception;
 
-    String queryFileUrl(int id);
+    String queryByid(Map map) throws Exception;
+
+    Rest updateVideo(MultipartFile multipartFile, HttpServletRequest request) throws Exception;
 }

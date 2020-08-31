@@ -30,4 +30,6 @@ public interface VideoDao {
     int queryByordernum(@Param(value="ordernum") String ordernum);
 
     String queryFileUrl(@Param(value="id") int id);
+
+    int queryByid(Map map);
 }
