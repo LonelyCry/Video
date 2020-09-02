@@ -23,7 +23,7 @@ public class LoginController {
     public Rest index(@RequestBody LoginDO loginDo) {
         System.out.println("用户登陆--------------------------------");
         Rest mv = new Rest();
-        if("admin".equals(loginDo.getUserName())){
+        if("admin".equals(loginDo.getUserName()) && "admin".equals(loginDo.getPassword())){
             mv.setStatus("ok");
             mv.setSuccess(true);
             mv.setMsg("登录成功!");

@@ -40,6 +40,8 @@ public class VideoConvert {
         // Streaming media output address, resolution (length, height), whether to record audio (0: no recording / 1: recording)
         FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(outputFile, width, height, channels);
         //recorder:输出
+        recorder.setVideoOption("-movflags", "+faststart");
+        //recorder.setVideoMetadata("rotate","90");
         recorder.setFrameRate(frameRate);
         recorder.setVideoBitrate(videoRate);
         recorder.setAudioBitrate(audioRate);

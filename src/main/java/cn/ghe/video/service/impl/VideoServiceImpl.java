@@ -97,7 +97,7 @@ public class VideoServiceImpl implements VideoService {
                     FileDeleteTool fileDeleteTool = new FileDeleteTool();
                     fileDeleteTool.delFile(map.get("fileurl").toString());
                     entity = fileUploadTool.createFile(multipartFile, request, ordernum);
-                    fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
+                    //fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
                     if (entity != null && "success".equals(flag)) {
                         map.put("duration",entity.getDuration());
                         map.put("uploadtime",entity.getUploadTime());

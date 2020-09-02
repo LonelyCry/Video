@@ -169,7 +169,7 @@ public class VideoController {
         try {
             String flag = videoService.emptyVideo();
             String filePath = "D:\\upload\\";
-            //String filePath = "/video/upload/;
+            //String filePath = "/video/upload/";
             System.out.println("开始删除文件");
             File file = new File(filePath);
             deleteAllFilesOfDir(file);
@@ -240,7 +240,7 @@ public class VideoController {
             }
             if("success".equals(flag)){
                 entity = fileUploadTool.createFile(multipartFile, request, order_num);
-                fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
+                //fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
                 message = "上传失败";
             }else {
                 message = "序号已经存在，请修改！";
@@ -351,7 +351,12 @@ public class VideoController {
         int i = input.available();
         byte[] bytes = new byte[i];
         input.read(bytes);
-        response.setContentType("application/video");
+        //response.setContentType("video/mpeg4");
+        response.addHeader("Accept-Ranges","bytes");
+        response.addHeader("Content-Length",""+ file.length());
+        response.addHeader("Content-Range","bytes 0-" + file.length());
+        response.setContentType("application/octet-stream");
+
         OutputStream output = response.getOutputStream();
         output.write(bytes);
         output.flush();
