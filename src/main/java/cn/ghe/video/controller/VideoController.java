@@ -4,7 +4,6 @@ import cn.ghe.video.bean.FileEntity;
 import cn.ghe.video.bean.IncorDO;
 import cn.ghe.video.bean.Rest;
 import cn.ghe.video.bean.VideoDO;
-import cn.ghe.video.common.FileDeleteTool;
 import cn.ghe.video.common.FileUploadTool;
 import cn.ghe.video.service.VideoService;
 import io.swagger.annotations.Api;
@@ -168,8 +167,8 @@ public class VideoController {
         Rest rest = new Rest();
         try {
             String flag = videoService.emptyVideo();
-            String filePath = "D:\\upload\\";
-            //String filePath = "/video/upload/";
+            //String filePath = "D:\\upload\\";
+            String filePath = "/video/upload/";
             System.out.println("开始删除文件");
             File file = new File(filePath);
             deleteAllFilesOfDir(file);
@@ -240,7 +239,7 @@ public class VideoController {
             }
             if("success".equals(flag)){
                 entity = fileUploadTool.createFile(multipartFile, request, order_num);
-                //fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
+                fileUploadTool.changeFile(entity.getPath(),entity.getOldpath());
                 message = "上传失败";
             }else {
                 message = "序号已经存在，请修改！";
@@ -351,7 +350,6 @@ public class VideoController {
         int i = input.available();
         byte[] bytes = new byte[i];
         input.read(bytes);
-        //response.setContentType("video/mpeg4");
         response.addHeader("Accept-Ranges","bytes");
         response.addHeader("Content-Length",""+ file.length());
         response.addHeader("Content-Range","bytes 0-" + file.length());

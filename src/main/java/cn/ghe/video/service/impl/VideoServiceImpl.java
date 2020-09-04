@@ -19,6 +19,7 @@ import java.util.*;
 
 @Service
 @Transactional
+@SuppressWarnings("unchecked")
 public class VideoServiceImpl implements VideoService {
 
     @Autowired
@@ -97,7 +98,7 @@ public class VideoServiceImpl implements VideoService {
                     FileDeleteTool fileDeleteTool = new FileDeleteTool();
                     fileDeleteTool.delFile(map.get("fileurl").toString());
                     entity = fileUploadTool.createFile(multipartFile, request, ordernum);
-                    //fileUploadTool.qtFile(entity.getPath(),entity.getOldpath());
+                    fileUploadTool.changeFile(entity.getPath(),entity.getOldpath());
                     if (entity != null && "success".equals(flag)) {
                         map.put("duration",entity.getDuration());
                         map.put("uploadtime",entity.getUploadTime());
@@ -128,6 +129,7 @@ public class VideoServiceImpl implements VideoService {
             e.printStackTrace();
             throw new Exception("更新视频有误！");//回滚所需要的，返回错误
         }
+        rest.setMsg(message);
         return rest;
     }
 
@@ -149,7 +151,9 @@ public class VideoServiceImpl implements VideoService {
             for (int i = 0;i < list.size();i++){
                 Map m = (Map) list.get(i);
                 String url = m.get("fileurl").toString();
-                fileDeleteTool.delFile(url);
+                if(!"".equals(url) || !"null".equals(url)){
+                    fileDeleteTool.delFile(url);
+                }
                 list_id.add(m.get("id").toString());
             }
             //删除当前id在数据库中的记录

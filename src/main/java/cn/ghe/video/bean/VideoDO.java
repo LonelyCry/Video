@@ -2,7 +2,6 @@ package cn.ghe.video.bean;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import java.sql.Date;
 
 /**
  * 视频类

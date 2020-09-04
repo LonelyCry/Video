@@ -12,8 +12,8 @@ import java.io.File;
 public class VideoConvert {
     public static void main(String[] args) throws Exception {
         VideoConvert m = new VideoConvert();
-        String sourcePath = "D:\\FFOutput\\123遇见·泸州老窖_Final版.mp4";
-        String targetPath = "D:\\FFOutput\\123遇见·泸州老窖_Final版1.mp4";
+        String sourcePath = "D:\\luzhou\\123遇见·泸州老窖_Final版.mp4";
+        String targetPath = "D:\\luzhou\\123遇见·泸州老窖_Final版1.mp4";
         m.frameRecord(sourcePath, targetPath);
     }
     private boolean isStart = true;
@@ -40,8 +40,8 @@ public class VideoConvert {
         // Streaming media output address, resolution (length, height), whether to record audio (0: no recording / 1: recording)
         FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(outputFile, width, height, channels);
         //recorder:输出
-        recorder.setVideoOption("faststart", "1");
-        //recorder.setVideoOption("-movflags", "+faststart");
+        //recorder.setVideoOption("faststart", "1");
+        //recorder.setVideoOption("movflags", "+faststart");
         //recorder.setVideoMetadata("rotate","90");
         recorder.setFrameRate(frameRate);
         recorder.setVideoBitrate(videoRate);

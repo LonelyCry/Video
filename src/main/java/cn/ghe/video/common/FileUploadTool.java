@@ -58,9 +58,9 @@ public class FileUploadTool {
             //String logoPathDir = "/video/upload/";
             //String logoRealPathDir = request.getSession().getServletContext().getRealPath(logoPathDir);
             // 上传到本地磁盘
-            String logoRealPathDir = "D:/upload";
+            //String logoRealPathDir = "D:/upload";
             //linux文件
-            //String logoRealPathDir = "video" + File.separator + "upload";
+            String logoRealPathDir = "/video" + File.separator + "upload";
             File logoSaveFile = new File(logoRealPathDir);
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
@@ -167,6 +167,22 @@ public class FileUploadTool {
         }
 
     }
+
+    public void changeFile(String fileNamedirs, String oldNamedirs) throws IOException, QtFastStart.UnsupportedFileException, QtFastStart.MalformedFileException {
+        boolean success = QtFastStart.fastStart(fileNamedirs, oldNamedirs);
+        File file = new File(oldNamedirs);
+        File file1 = new File(fileNamedirs);
+        FileDeleteTool fileDeleteTool = new FileDeleteTool();
+        System.out.println(file.exists());
+        if(file.exists() && file1.exists()){
+            fileDeleteTool.delFile(fileNamedirs);
+            file.renameTo(file1);
+            System.out.println("renameToNew--------------------");
+        }else if(file.exists() && !file1.exists()){
+            file.renameTo(file1);
+        }
+    }
+
 
     public void qtFile(String fileNamedirs, String oldNamedirs) throws IOException {
         String ruti = "cmd /c start ";
