@@ -1,8 +1,8 @@
 package cn.ghe.video.common;
 
 import cn.ghe.video.bean.FileEntity;
-import it.sauronsoftware.jave.Encoder;
-import it.sauronsoftware.jave.MultimediaInfo;
+import org.bytedeco.ffmpeg.global.avcodec;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,8 +40,7 @@ public class FileUploadTool {
             if (multipartFile.getSize() <= upload_maxsize) {
                 bflag = true;
                 // 文件类型判断
-                if (this.checkFileType(fileName)) {
-                    bflag = true;
+                if (this.checkFileType(fileName)) { bflag = true;
                 } else {
                     bflag = false;
                     System.out.println("文件类型不允许");
@@ -89,11 +88,14 @@ public class FileUploadTool {
                 multipartFile.transferTo(oldfiledirs);
                 copyFile(oldNamedirs,fileNamedirs);
                 VideoConvert v = new VideoConvert();
-                Encoder encoder = new Encoder();
-                MultimediaInfo m = encoder.getInfo(filedirs);
 
-                System.out.println(m.getVideo().getDecoder());
-                if("h264".equals(m.getVideo().getDecoder())){
+
+                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(filedirs);
+                grabber.start();
+                int codec = grabber.getVideoCodec();
+                grabber.close();
+
+                if(avcodec.AV_CODEC_ID_H264 == codec){
                     fileDeleteTool.delFile(oldNamedirs);
                 }else{
                     fileDeleteTool.delFile(fileNamedirs);
@@ -350,13 +352,17 @@ public class FileUploadTool {
         return size;
     }
 
-    private String ReadVideoTime(String source) {
+    public String ReadVideoTime(String source) {
         File f = new File(source);
-        Encoder encoder = new Encoder();
         String length = "";
         try {
-            MultimediaInfo md = encoder.getInfo(f);
-            long ls = md.getDuration()/1000;
+            FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(source);
+            grabber.start();
+            int codec = grabber.getVideoCodec();
+            long duration = grabber.getLengthInTime() / 1000;
+            grabber.close();
+//            long ls = md.getDuration()/1000;
+            long ls = duration/1000;
             int hour = (int) (ls/3600);
             int minute = (int) (ls%3600)/60;
             int second = (int) (ls-hour*3600-minute*60);
@@ -369,5 +375,4 @@ public class FileUploadTool {
         }
         return length;
     }
-
 }

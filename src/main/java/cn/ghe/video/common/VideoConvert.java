@@ -1,8 +1,6 @@
 package cn.ghe.video.common;
 
-import it.sauronsoftware.jave.Encoder;
-import it.sauronsoftware.jave.MultimediaInfo;
-import org.bytedeco.javacpp.avcodec;
+import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
 import org.bytedeco.javacv.Frame;
@@ -14,12 +12,14 @@ public class VideoConvert {
         VideoConvert m = new VideoConvert();
         String sourcePath = "D:\\luzhou\\123遇见·泸州老窖_Final版.mp4";
         String targetPath = "D:\\luzhou\\123遇见·泸州老窖_Final版1.mp4";
-        m.frameRecord(sourcePath, targetPath);
+        FileUploadTool s = new FileUploadTool();
+        System.out.println(s.ReadVideoTime(sourcePath));
+       // m.frameRecord(sourcePath, targetPath);
     }
     private boolean isStart = true;
 
     public void frameRecord(String inputFile, String outputFile)
-            throws Exception, org.bytedeco.javacv.FrameRecorder.Exception {
+            throws Exception {
         // Get the video source
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(inputFile);
         grabber.start();
@@ -29,6 +29,8 @@ public class VideoConvert {
         int channels = grabber.getAudioChannels();
         int audioRate = grabber.getAudioBitrate();
         double frameRate = grabber.getVideoFrameRate();
+
+
 
         //grabber.setOption("rtsp_transport","tcp");
         //speed

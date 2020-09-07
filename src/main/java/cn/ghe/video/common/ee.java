@@ -1,8 +1,5 @@
 package cn.ghe.video.common;
 
-import it.sauronsoftware.jave.*;
-
-import java.io.File;
 
 public class ee {
 
@@ -77,21 +74,21 @@ public class ee {
             e.printStackTrace();
         }
     }*/
-    public void convertMultimediaFormat(String sourcePath, String targetPath, String audioEncoder, String videoEncoder,
+    /*public void convertMultimediaFormat(String sourcePath, String targetPath, String audioEncoder, String videoEncoder,
                                         String targetFormat) {
         try {
-			/*File source = new File("C:\\Users\\Administrator\\Pictures\\新建文件夹\\3-6 webpack打包（中）.avi");
-			File target = new File("C:\\Users\\Administrator\\Pictures\\新建文件夹\\4-3.mp4");*/
+			*//*File source = new File("C:\\Users\\Administrator\\Pictures\\新建文件夹\\3-6 webpack打包（中）.avi");
+			File target = new File("C:\\Users\\Administrator\\Pictures\\新建文件夹\\4-3.mp4");*//*
             File source = new File(sourcePath);
             File target = new File(targetPath);
-            /*设置音频属性*/
+            *//*设置音频属性*//*
             AudioAttributes audio = new AudioAttributes();
             audio.setCodec(audioEncoder); // libmp3lame  或  flac
             audio.setBitRate(new Integer(400000)); // 数字越大声音越接近原声，转换时间越久（亲测这个数值比较好）
             audio.setChannels(new Integer(1));
 
             // audio.setSamplingRate(new Integer(22050));
-            /*设置视频属性*/
+            *//*设置视频属性*//*
             VideoAttributes video = new VideoAttributes();
             video.setCodec(videoEncoder);  // msmpeg4v2
             video.setBitRate(new Integer(1600000)); // 数字越大画面越清晰，转换时间越久（亲测这个数值比较好）
@@ -99,12 +96,12 @@ public class ee {
             video.setSize(new VideoSize(1920, 1080));
 
 
-            /*设置编码属性*/
+            *//*设置编码属性*//*
             EncodingAttributes attrs = new EncodingAttributes();
             attrs.setFormat(targetFormat); //mp4  需要转换成的格式
             attrs.setAudioAttributes(audio);
             attrs.setVideoAttributes(video);
-            /*执行转码*/
+            *//*执行转码*//*
             Encoder encoder = new Encoder();
             MultimediaInfo m = encoder.getInfo(source);
             System.out.println(m.getVideo().getDecoder());
@@ -118,9 +115,9 @@ public class ee {
             System.out.println(m.getDuration());
             String[] s = encoder.getVideoEncoders();
             String[] ss = encoder.getSupportedDecodingFormats();
-            /*for (int i = 0;i < s.length;i++){
+            *//*for (int i = 0;i < s.length;i++){
                 System.out.println(s[i]  + " :" + ss[i]);
-            }*/
+            }*//*
             System.out.println();
             //encoder.encode(source, target, attrs);
 
@@ -151,5 +148,5 @@ public class ee {
         //String sourcePath = "C:\\Users\\17426\\Downloads\\5b527330214a6.mp4";
         String targetPath = "C:\\Users\\17426\\Downloads\\Final版321.mp4";
         m.convertMultimediaFormat(sourcePath, targetPath, "libfaac", "libx264", "flv");
-    }
+    }*/
 }
